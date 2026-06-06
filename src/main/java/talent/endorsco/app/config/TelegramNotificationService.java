@@ -12,13 +12,19 @@ public class TelegramNotificationService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${telegram.bot-token}")
+    @Value("${telegram.bot-token:}")
     private String botToken;
 
-    @Value("${telegram.chat-id}")
+    @Value("${telegram.chat-id:}")
     private String chatId;
 
     public void sendMessage(String message) {
+        // If bot token or chat id are not set, don't send message
+        if (botToken == null || botToken.trim().isEmpty() || chatId == null || chatId.trim().isEmpty()) {
+            System.out.println("Telegram credentials not set, skipping notification: " + message);
+            return;
+        }
+        
         // Ensure message is never empty
         if (message == null || message.trim().isEmpty()) {
             message = "<b>New notification received!</b>\nNo details were provided.";
@@ -29,10 +35,10 @@ public class TelegramNotificationService {
             String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8.toString());
             
             String url = String.format(
-                "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&parse_mode=HTML&text=%s",
-                botToken,
-                chatId,
-                encodedMessage
+                    "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&parse_mode=HTML&text=%s",
+                    botToken,
+                    chatId,
+                    encodedMessage
             );
             
             restTemplate.getForObject(url, String.class);
@@ -43,9 +49,7 @@ public class TelegramNotificationService {
 
     private String escapeHtml(String text) {
         if (text == null) return "";
-        return text.replace("&", "&amp;")
-                   .replace("<", "&lt;")
-                   .replace(">", "&gt;");
+        return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
     }
 
     public String formatBookingRequestMessage(talent.endorsco.app.booking.BookingRequestDTO dto) {
