@@ -1,6 +1,4 @@
 (function () {
-  const DEFAULT_TALENT_SLUG = "common";
-
   document.addEventListener("DOMContentLoaded", () => {
     initCarousels();
     initModal();
@@ -56,20 +54,13 @@
   async function loadAndApplyTalent() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-    const slug = params.get("slug") || (!id ? DEFAULT_TALENT_SLUG : null);
+    const slug = params.get("slug");
 
     let data = await fetchTalentFromApi(id, slug);
 
-    if (!data && slug) {
-      try {
-        const res = await fetch(`js/data/talent-${slug}.json`);
-        if (res.ok) data = await res.json();
-      } catch (_) {}
-    }
-
     if (!data) {
       console.warn("Could not load talent data", { id, slug });
-      showTalentContent(); // Still show main content even if no data found
+      // Keep loading screen visible if no data
       return;
     }
 
@@ -111,7 +102,9 @@
       .replace(/bookings@speakerbookingagency\.com/gi, "booking@endorscobookings.com")
       .replace(
         /https?:\/\/www\.speakerbookingagency\.com\/booking-request\/[a-z0-9-]+/gi,
-        `booking.html?id=${data.id}`
+        data.slug 
+          ? `booking.html?slug=${encodeURIComponent(data.slug)}` 
+          : `booking.html?id=${data.id}`
       )
       .replace(
         new RegExp(`${fullName}'s`, "gi"),
@@ -249,11 +242,15 @@
       "#talent-booking-link-top, #talent-booking-link-bottom, .talent-booking-link-top, #talent-booking-link-sidebar, .talent-booking-link"
     );
     bookingLinks.forEach((link) => {
-      link.href = `/booking.html?id=${data.id}`;
+      link.href = data.slug 
+        ? `/booking.html?slug=${encodeURIComponent(data.slug)}` 
+        : `/booking.html?id=${data.id}`;
     });
 
     document.querySelectorAll('a[href*="/booking-request/"]').forEach((link) => {
-      link.href = `/booking.html?id=${data.id}`;
+      link.href = data.slug 
+        ? `/booking.html?slug=${encodeURIComponent(data.slug)}` 
+        : `/booking.html?id=${data.id}`;
     });
 
     const pageTitle =
@@ -715,6 +712,12 @@
   function generateArtistCard(artist) {
     const name = getFullName(artist);
     const fee = getFeeLabel(artist);
+    const talentHref = artist.slug 
+      ? `/talent.html?slug=${encodeURIComponent(artist.slug)}` 
+      : `/talent.html?id=${artist.id}`;
+    const bookingHref = artist.slug 
+      ? `/booking.html?slug=${encodeURIComponent(artist.slug)}` 
+      : `/booking.html?id=${artist.id}`;
     return `
       <div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0 pl-4 basis-1/2 sm:basis-1/3 lg:basis-1/4">
         <div class="h-full">
@@ -726,7 +729,7 @@
                 </div>
                 <div class="p-6 flex flex-1 flex-col gap-1.5 px-2.5 py-2.5 text-left">
                   <div class="space-y-0.5">
-                    <a href="/talent.html?id=${artist.id}"><h3 class="text-base font-bold uppercase tracking-[0.04em] text-foreground dark:text-white">${name}</h3></a>
+                    <a href="${talentHref}"><h3 class="text-base font-bold uppercase tracking-[0.04em] text-foreground dark:text-white">${name}</h3></a>
                     <p class="text-[13px] font-semibold text-neutral-700 dark:text-neutral-200 leading-snug line-clamp-2">${artist.title || ""}</p>
                   </div>
                   <div class="space-y-1 text-[11px] sm:text-[12px] text-neutral-700 dark:text-neutral-200 pt-1">
@@ -740,8 +743,8 @@
                     </div>
                   </div>
                   <div class="mt-auto flex flex-col gap-1.5 pt-1.5">
-                    <a class="w-full" href="/talent.html?id=${artist.id}"><button class="inline-flex items-center whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground px-4 py-2 w-full justify-center rounded-full text-sm font-semibold h-10 text-black bg-[#EBAC2B] hover:bg-primary-600">View Profile</button></a>
-                    <a class="w-full inline-flex items-center justify-center whitespace-nowrap text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-full font-semibold h-10" href="/booking.html?id=${artist.id}" style="background-color:rgb(10,10,10);color:rgb(255,255,255)">Book Now</a>
+                    <a class="w-full" href="${talentHref}"><button class="inline-flex items-center whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground px-4 py-2 w-full justify-center rounded-full text-sm font-semibold h-10 text-black bg-[#EBAC2B] hover:bg-primary-600">View Profile</button></a>
+                    <a class="w-full inline-flex items-center justify-center whitespace-nowrap text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-full font-semibold h-10" href="${bookingHref}" style="background-color:rgb(10,10,10);color:rgb(255,255,255)">Book Now</a>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,7 @@
 package talent.endorsco.app.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -11,6 +13,9 @@ import java.nio.charset.StandardCharsets;
 public class TelegramNotificationService {
 
     private final RestTemplate restTemplate = new RestTemplate();
+    
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Value("${telegram.bot-token:}")
     private String botToken;
@@ -19,15 +24,21 @@ public class TelegramNotificationService {
     private String chatId;
 
     public void sendMessage(String message) {
+        // Log all data to console first
+        System.out.println("===== PREPARING TO SEND TELEGRAM MESSAGE =====");
+        System.out.println("Message:");
+        System.out.println(message);
+        System.out.println("============================================");
+
         // If bot token or chat id are not set, don't send message
         if (botToken == null || botToken.trim().isEmpty() || chatId == null || chatId.trim().isEmpty()) {
-            System.out.println("Telegram credentials not set, skipping notification: " + message);
+            System.out.println("Telegram credentials not set, skipping notification.");
             return;
         }
         
         // Ensure message is never empty
         if (message == null || message.trim().isEmpty()) {
-            message = "<b>New notification received!</b>\nNo details were provided.";
+            message = "New notification received!\nNo details were provided.";
         }
         
         try {
@@ -35,26 +46,33 @@ public class TelegramNotificationService {
             String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8.toString());
             
             String url = String.format(
-                    "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&parse_mode=HTML&text=%s",
+                    "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s",
                     botToken,
                     chatId,
                     encodedMessage
             );
             
             restTemplate.getForObject(url, String.class);
+            System.out.println("Telegram message sent successfully!");
         } catch (Exception e) {
+            System.err.println("Error sending Telegram message:");
             e.printStackTrace();
         }
     }
 
-    private String escapeHtml(String text) {
-        if (text == null) return "";
-        return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
-    }
-
     public String formatBookingRequestMessage(talent.endorsco.app.booking.BookingRequestDTO dto) {
+        // Log the entire DTO as JSON
+        try {
+            System.out.println("===== BOOKING REQUEST DTO =====");
+            System.out.println(objectMapper.writeValueAsString(dto));
+            System.out.println("===============================");
+        } catch (Exception e) {
+            System.err.println("Error logging DTO:");
+            e.printStackTrace();
+        }
+
         StringBuilder sb = new StringBuilder();
-        sb.append("<b>🎫 New Booking Request</b>\n\n");
+        sb.append("🎫 New Booking Request\n\n");
         
         boolean hasContent = false;
         String name = dto.getName() != null ? dto.getName() : 
@@ -62,44 +80,44 @@ public class TelegramNotificationService {
                       (dto.getFirstName() != null ? dto.getFirstName() : "") + " " + 
                       (dto.getLastName() != null ? dto.getLastName() : "") : null);
         if (name != null && !name.trim().isEmpty()) {
-            sb.append("<b>Name:</b> ").append(escapeHtml(name.trim())).append("\n");
+            sb.append("Name: ").append(name.trim()).append("\n");
             hasContent = true;
         }
         if (dto.getEmail() != null && !dto.getEmail().trim().isEmpty()) {
-            sb.append("<b>Email:</b> ").append(escapeHtml(dto.getEmail().trim())).append("\n");
+            sb.append("Email: ").append(dto.getEmail().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getPhone() != null && !dto.getPhone().trim().isEmpty()) {
-            sb.append("<b>Phone:</b> ").append(escapeHtml(dto.getPhone().trim())).append("\n");
+            sb.append("Phone: ").append(dto.getPhone().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getOrganization() != null && !dto.getOrganization().trim().isEmpty()) {
-            sb.append("<b>Organization:</b> ").append(escapeHtml(dto.getOrganization().trim())).append("\n");
+            sb.append("Organization: ").append(dto.getOrganization().trim()).append("\n");
             hasContent = true;
         }
         String desiredSpeaker = dto.getDesiredSpeaker() != null ? dto.getDesiredSpeaker() : dto.getPreferredSpeakers();
         if (desiredSpeaker != null && !desiredSpeaker.trim().isEmpty()) {
-            sb.append("<b>Desired Speaker:</b> ").append(escapeHtml(desiredSpeaker.trim())).append("\n");
+            sb.append("Desired Speaker: ").append(desiredSpeaker.trim()).append("\n");
             hasContent = true;
         }
         if (dto.getEventType() != null && !dto.getEventType().trim().isEmpty()) {
-            sb.append("<b>Event Type:</b> ").append(escapeHtml(dto.getEventType().trim())).append("\n");
+            sb.append("Event Type: ").append(dto.getEventType().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getEventDate() != null && !dto.getEventDate().trim().isEmpty()) {
-            sb.append("<b>Event Date:</b> ").append(escapeHtml(dto.getEventDate().trim())).append("\n");
+            sb.append("Event Date: ").append(dto.getEventDate().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getEventLocation() != null && !dto.getEventLocation().trim().isEmpty()) {
-            sb.append("<b>Event Location:</b> ").append(escapeHtml(dto.getEventLocation().trim())).append("\n");
+            sb.append("Event Location: ").append(dto.getEventLocation().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getBudget() != null && !dto.getBudget().trim().isEmpty()) {
-            sb.append("<b>Budget:</b> ").append(escapeHtml(dto.getBudget().trim())).append("\n");
+            sb.append("Budget: ").append(dto.getBudget().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getEventDescription() != null && !dto.getEventDescription().trim().isEmpty()) {
-            sb.append("\n<b>Event Description:</b>\n").append(escapeHtml(dto.getEventDescription().trim()));
+            sb.append("\nEvent Description:\n").append(dto.getEventDescription().trim());
             hasContent = true;
         }
         
@@ -112,24 +130,34 @@ public class TelegramNotificationService {
     }
 
     public String formatContactInquiryMessage(talent.endorsco.app.booking.ContactInquiryDTO dto) {
+        // Log the entire DTO as JSON
+        try {
+            System.out.println("===== CONTACT INQUIRY DTO =====");
+            System.out.println(objectMapper.writeValueAsString(dto));
+            System.out.println("================================");
+        } catch (Exception e) {
+            System.err.println("Error logging DTO:");
+            e.printStackTrace();
+        }
+
         StringBuilder sb = new StringBuilder();
-        sb.append("<b>📩 New Contact Inquiry</b>\n\n");
+        sb.append("📩 New Contact Inquiry\n\n");
         
         boolean hasContent = false;
         if (dto.getName() != null && !dto.getName().trim().isEmpty()) {
-            sb.append("<b>Name:</b> ").append(escapeHtml(dto.getName().trim())).append("\n");
+            sb.append("Name: ").append(dto.getName().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getEmail() != null && !dto.getEmail().trim().isEmpty()) {
-            sb.append("<b>Email:</b> ").append(escapeHtml(dto.getEmail().trim())).append("\n");
+            sb.append("Email: ").append(dto.getEmail().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getTopic() != null && !dto.getTopic().trim().isEmpty()) {
-            sb.append("<b>Topic:</b> ").append(escapeHtml(dto.getTopic().trim())).append("\n");
+            sb.append("Topic: ").append(dto.getTopic().trim()).append("\n");
             hasContent = true;
         }
         if (dto.getMessage() != null && !dto.getMessage().trim().isEmpty()) {
-            sb.append("\n<b>Message:</b>\n").append(escapeHtml(dto.getMessage().trim()));
+            sb.append("\nMessage:\n").append(dto.getMessage().trim());
             hasContent = true;
         }
         

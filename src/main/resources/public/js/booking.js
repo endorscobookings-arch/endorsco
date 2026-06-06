@@ -58,6 +58,18 @@
         return "Available Upon Request";
     }
 
+    function showTalentContent() {
+        const loadingScreen = document.getElementById('talent-loading-screen');
+        const mainContent = document.getElementById('talent-main-content');
+        
+        if (loadingScreen) {
+            loadingScreen.style.display = 'none';
+        }
+        if (mainContent) {
+            mainContent.classList.remove('hidden');
+        }
+    }
+
     async function init() {
         const urlParams = new URLSearchParams(window.location.search);
         const artistId = urlParams.get('id');
@@ -65,18 +77,15 @@
 
         let data = await fetchTalentFromApi(artistId, slug);
 
-        if (!data && slug) {
-            try {
-                const res = await fetch(`js/data/talent-${slug}.json`);
-                if (res.ok) data = await res.json();
-            } catch (_) {}
-        }
-
         if (!data) {
             console.error('Could not load talent data', { id: artistId, slug });
-        } else {
-            updatePageContent(data);
+            // Keep loading screen visible if no data
+            initFormSubmission();
+            return;
         }
+
+        updatePageContent(data);
+        showTalentContent();
 
         // Initialize form submission
         initFormSubmission();
@@ -103,7 +112,9 @@
         // Update Breadcrumb
         const breadcrumbLink = document.getElementById('booking-breadcrumb-link');
         if (breadcrumbLink) {
-            breadcrumbLink.href = `/talent.html?id=${data.id}`;
+            breadcrumbLink.href = data.slug 
+                ? `/talent.html?slug=${encodeURIComponent(data.slug)}` 
+                : `/talent.html?id=${data.id}`;
         }
 
         // Update Artist Sidebar

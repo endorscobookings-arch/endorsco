@@ -147,52 +147,60 @@ public class BookingRequestController {
     // Check availability endpoint - sends notification to Telegram
     @PostMapping("/check-availability")
     public ResponseEntity<Map<String, String>> checkAvailability(@RequestBody Map<String, Object> requestData) {
+        // Log all data to console first
+        try {
+            System.out.println("===== AVAILABILITY CHECK REQUEST =====");
+            System.out.println(objectMapper.writeValueAsString(requestData));
+            System.out.println("======================================");
+        } catch (Exception e) {
+            System.err.println("Error logging request data:");
+            e.printStackTrace();
+        }
+
         StringBuilder message = new StringBuilder();
-        message.append("<b>🔍 Availability Check Request</b>\n\n");
+        message.append("🔍 Availability Check Request\n\n");
         
-        // Helper method to safely escape and get string values
-        java.util.function.Function<Object, String> getEscapedString = obj -> {
+        // Helper method to safely get string values
+        java.util.function.Function<Object, String> getString = obj -> {
             if (obj == null) return null;
             String str = obj.toString().trim();
-            if (str.isEmpty()) return null;
-            // Escape HTML in user-provided content
-            return str.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+            return str.isEmpty() ? null : str;
         };
         
         boolean hasContent = false;
-        String talentId = getEscapedString.apply(requestData.get("talentId"));
+        String talentId = getString.apply(requestData.get("talentId"));
         if (talentId != null) {
-            message.append("<b>Talent ID:</b> ").append(talentId).append("\n");
+            message.append("Talent ID: ").append(talentId).append("\n");
             hasContent = true;
         }
-        String talentName = getEscapedString.apply(requestData.get("talentName"));
+        String talentName = getString.apply(requestData.get("talentName"));
         if (talentName != null) {
-            message.append("<b>Talent Name:</b> ").append(talentName).append("\n");
+            message.append("Talent Name: ").append(talentName).append("\n");
             hasContent = true;
         }
-        String date = getEscapedString.apply(requestData.get("date"));
+        String date = getString.apply(requestData.get("date"));
         if (date != null) {
-            message.append("<b>Date:</b> ").append(date).append("\n");
+            message.append("Date: ").append(date).append("\n");
             hasContent = true;
         }
-        String location = getEscapedString.apply(requestData.get("location"));
+        String location = getString.apply(requestData.get("location"));
         if (location != null) {
-            message.append("<b>Location:</b> ").append(location).append("\n");
+            message.append("Location: ").append(location).append("\n");
             hasContent = true;
         }
-        String userMessage = getEscapedString.apply(requestData.get("message"));
+        String userMessage = getString.apply(requestData.get("message"));
         if (userMessage != null) {
-            message.append("\n<b>Message:</b>\n").append(userMessage);
+            message.append("\nMessage:\n").append(userMessage);
             hasContent = true;
         }
-        String name = getEscapedString.apply(requestData.get("name"));
+        String name = getString.apply(requestData.get("name"));
         if (name != null) {
-            message.append("\n<b>From:</b> ").append(name);
+            message.append("\nFrom: ").append(name);
             hasContent = true;
         }
-        String email = getEscapedString.apply(requestData.get("email"));
+        String email = getString.apply(requestData.get("email"));
         if (email != null) {
-            message.append("\n<b>Email:</b> ").append(email);
+            message.append("\nEmail: ").append(email);
             hasContent = true;
         }
         

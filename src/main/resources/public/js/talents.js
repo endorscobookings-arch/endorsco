@@ -250,6 +250,13 @@ function generateTalentCard(talent) {
     (talent.feeRange && talent.feeRange.label) ||
     "Available Upon Request";
 
+  const talentHref = talent.slug 
+    ? `talent.html?slug=${encodeURIComponent(talent.slug)}` 
+    : `talent.html?id=${talent.id}`;
+  const bookingHref = talent.slug 
+    ? `booking.html?slug=${encodeURIComponent(talent.slug)}` 
+    : `booking.html?id=${talent.id}`;
+
   return `
     <div class="w-full max-w-[360px] sm:max-w-none">
       <article class="h-full">
@@ -276,7 +283,7 @@ function generateTalentCard(talent) {
             </div>
             <div class="p-6 flex flex-1 flex-col gap-1.5 px-2.5 py-2.5 text-left">
               <div class="space-y-0.5">
-                <a href="talent.html?slug=${talent.slug || talent.id}">
+                <a href="${talentHref}">
                   <h3
                     class="text-base font-bold uppercase tracking-[0.04em] text-foreground dark:text-white"
                   >
@@ -372,7 +379,7 @@ function generateTalentCard(talent) {
               <div class="mt-auto flex flex-col gap-1.5 pt-1.5">
                 <a
                   class="w-full"
-                  href="talent.html?slug=${talent.slug || talent.id}"
+                  href="${talentHref}"
                 >
                   <button
                     class="inline-flex items-center whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground px-4 py-2 w-full justify-center rounded-full text-sm font-semibold h-10 text-black bg-[#EBAC2B] hover:bg-primary-600"
@@ -382,7 +389,7 @@ function generateTalentCard(talent) {
                 </a>
                 <a
                   class="w-full"
-                  href="booking.html?slug=${talent.slug || talent.id}"
+                  href="${bookingHref}"
                 >
                   <button
                     class="inline-flex items-center whitespace-nowrap text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 w-full justify-center rounded-full font-semibold h-10"
