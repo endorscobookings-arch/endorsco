@@ -192,15 +192,17 @@
                 data.ip = null;
             }
 
-            // Submit to API
-            try {
-                const response = await fetch('/api/check-availability', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
+            console.log('Booking form data:', data);
+
+            // Submit to API - /api/booking-requests/booking endpoint for dedicated booking page
+          try {
+            const response = await fetch(`${API_BASE_URL}/booking-requests/booking`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            });
 
                 if (response.ok) {
                     alert('Thank you for your booking request! We will contact you soon.');

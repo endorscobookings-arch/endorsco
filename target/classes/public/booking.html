@@ -157,87 +157,259 @@
         </div>
       </div>
     </div>
-    <header
-      class="sticky top-0 z-40 border-b transition-all duration-300 bg-neutral-950 border-transparent"
-    >
-      <div
-        class="md:hidden bg-primary-600 text-white text-sm font-semibold flex items-center justify-between gap-2 py-2 px-4"
-      >
-        <div class="h-8 w-8" aria-hidden="true"></div>
-        <div class="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-phone h-4 w-4"
-          >
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-            ></path></svg
-          ><a class="hover:underline" href="tel:+44-7351-271379"
-            >+44-7351-271379</a
-          >
+    <header class="sticky top-0 z-40 border-b transition-all duration-300 bg-neutral-950 border-transparent">
+    <div
+      class="md:hidden bg-primary-600 text-white text-sm font-semibold flex items-center justify-center gap-2 py-2 px-4">
+      <div class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-phone h-4 w-4">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+          </path>
+        </svg><a class="hover:underline" href="tel:+44-7351-271379">+44-7351-271379</a>
+      </div>
+    </div>
+    <div class="container-custom">
+      <div class="md:hidden flex items-center justify-between gap-1 xs:gap-2 py-3">
+        <a class="bg-amber-500 hover:bg-amber-400 text-slate-900 text-xs xs:text-sm font-semibold px-2.5 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-sm flex-shrink-0"
+          href="contact.html">Contact</a><a class="flex items-center justify-center flex-1 min-w-0" href="/"><img
+            alt="TalentBookingAgency" width="180" height="40" class="block h-8 xs:h-10 w-auto object-contain"
+            style="color: transparent" src="/images/logo.svg" /></a>
+        <div class="flex items-center flex-shrink-0">
+          <button id="search-btn-mobile" class="flex h-9 w-9 xs:h-11 xs:w-11 items-center justify-center text-white hover:text-primary-300"
+            aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-search h-4 w-4 xs:h-5 xs:w-5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg></button><button id="header-menu-toggle"
+            class="flex h-9 w-9 xs:h-11 xs:w-11 items-center justify-center text-white hover:text-primary-300 -mr-1"
+            aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-menu h-4 w-4 xs:h-5 xs:w-5">
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="6" y2="6"></line>
+              <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+          </button>
         </div>
       </div>
-      <div class="container-custom">
-        <div
-          class="md:hidden flex items-center justify-between gap-1 xs:gap-2 py-3"
-        >
-          <a
-            class="bg-amber-500 hover:bg-amber-400 text-slate-900 text-xs xs:text-sm font-semibold px-2.5 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-sm flex-shrink-0"
-            href="/contact"
-            >Contact</a
-          ><a class="flex items-center justify-center flex-1 min-w-0" href="/"
-            ><img
-              alt="Endorsco"
-              width="180"
-              height="40"
-              class="block h-8 xs:h-10 w-auto object-contain"
-              style="color: transparent"
-              src="/images/logo.svg"
-          /></a>
-          <div class="flex items-center flex-shrink-0">
-            <button
-              class="flex h-9 w-9 xs:h-11 xs:w-11 items-center justify-center text-white hover:text-primary-300"
-              aria-label="Open search"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-search h-4 w-4 xs:h-5 xs:w-5"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path>
-              </svg></button
-            ><button
-              class="flex h-9 w-9 xs:h-11 xs:w-11 items-center justify-center text-white hover:text-primary-300 -mr-1"
-              aria-label="Toggle menu"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-menu h-4 w-4 xs:h-5 xs:w-5"
-              >
+
+      <!-- Mobile Navigation Menu -->
+      <div id="mobile-menu"
+        class="fixed right-0 top-0 z-50 h-screen w-[85vw] max-w-sm overflow-y-auto border-l border-white/5 bg-neutral-950 text-white shadow-soft lg:hidden hidden">
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(242,181,68,0.18),transparent_42%)]"
+            style="
+                background-image: radial-gradient(
+                  circle at 20% 20%,
+                  rgba(242, 181, 68, 0.18),
+                  transparent 42%
+                );
+              "></div>
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_90%_10%,rgba(255,255,255,0.08),transparent_38%)]">
+          </div>
+          <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 via-transparent to-transparent">
+          </div>
+        </div>
+        <div class="relative flex items-center justify-between px-5 py-4 border-b border-white/10">
+          <a class="flex items-center gap-3" href="/">
+            <img alt="Endorsco Talent Agency" class="block h-9 w-auto" style="color: transparent;"
+              src="/images/logo.svg">
+          </a>
+          <button type="button" id="close-mobile-menu"
+            class="flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-700 bg-neutral-800 text-white hover:bg-neutral-700">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-x h-5 w-5">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="relative px-5 py-4 space-y-1">
+          <a class="flex items-center justify-between rounded-xl px-2 py-4 text-base font-semibold text-white hover:bg-primary-500/10"
+            href="talents.html">
+            <span>Actors & Talent</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-arrow-right h-4 w-4 text-primary-400">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+
+          <!-- Talent Topics Dropdown -->
+          <div class="border border-white/10 rounded-xl overflow-hidden">
+            <button id="talent-topics-toggle" onclick="toggleTalentTopics()"
+              class="flex w-full items-center justify-between px-3 py-4 text-base font-semibold text-white hover:bg-primary-500/10">
+              <span>Talent Topics</span>
+              <svg id="talent-topics-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-chevron-down h-4 w-4 text-primary-400" style="transition: transform 0.2s ease;">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div id="talent-topics-dropdown" class="hidden px-3 pb-4 space-y-1">
+              <a class="flex items-center rounded-lg px-2 py-3 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10"
+                href="talents.html?category=professional-speakers">
+                Best Professional Speakers
+              </a>
+              <a class="flex items-center rounded-lg px-2 py-3 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10"
+                href="talents.html?category=business">
+                Best Business Speakers
+              </a>
+              <a class="flex items-center rounded-lg px-2 py-3 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10"
+                href="talents.html?category=diversity-inclusion">
+                Best Diversity & Inclusion Speakers
+              </a>
+              <a class="flex items-center rounded-lg px-2 py-3 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10"
+                href="talents.html?category=technology">
+                Best Technology Speakers
+              </a>
+              <a class="flex items-center rounded-lg px-2 py-3 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10"
+                href="talents.html?category=sports-motivational">
+                Best Sports Motivational Speakers
+              </a>
+              <a class="flex items-center rounded-lg px-2 py-3 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10"
+                href="talents.html?category=politics-world-issues">
+                Best Politics/World Issue Speakers
+              </a>
+            </div>
+          </div>
+
+          <a class="flex items-center justify-between rounded-xl px-2 py-4 text-base font-semibold text-white hover:bg-primary-500/10"
+            href="recent-bookings.html">
+            <span>Recent Bookings</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-arrow-right h-4 w-4 text-primary-400">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+          <a class="flex items-center justify-between rounded-xl px-2 py-4 text-base font-semibold text-white hover:bg-primary-500/10"
+            href="about-us.html">
+            <span>About Us</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-arrow-right h-4 w-4 text-primary-400">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+          <a class="flex items-center justify-between rounded-xl px-2 py-4 text-base font-semibold text-white hover:bg-primary-500/10"
+            href="blog.html">
+            <span>Blog</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-arrow-right h-4 w-4 text-primary-400">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+          <a class="flex items-center justify-between rounded-xl px-2 py-4 text-base font-semibold text-white hover:bg-primary-500/10"
+            href="contact.html">
+            <span>Contact</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-arrow-right h-4 w-4 text-primary-400">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="relative px-5 py-4 border-t border-white/10 space-y-3">
+          <button id="mobile-menu-book-now" type="button"
+            class="w-full rounded-2xl bg-primary-500 text-black text-base font-semibold hover:bg-primary-600 text-center py-3 block">Book
+            Now</button>
+        </div>
+        <div class="relative px-5 pb-6 space-y-2">
+          <div class="flex items-center gap-2 text-sm font-semibold text-neutral-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-phone h-4 w-4 text-primary-400">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+              </path>
+            </svg>
+            <a href="tel:+44-7351-271379">+44-7351-271379</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:flex h-18 items-center justify-between py-3">
+        <div class="flex items-center gap-3 flex-shrink-0 flex-1">
+          <a class="flex items-center gap-2" href="/"><img alt="TalentBookingAgency" loading="lazy" width="0" height="0"
+              class="block h-11 w-auto" style="color: transparent" sizes="100vw" src="/images/logo.svg" /></a>
+        </div>
+        <div class="hidden lg:flex items-center justify-evenly gap-5 xl:gap-7 flex-[2]">
+          <!-- Actors & Talent Link -->
+          <a class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
+            href="talents.html">Actors &amp; Talent</a>
+
+          <!-- Talent Topics Dropdown -->
+          <div class="relative" id="desktop-talent-topics-container">
+            <button id="desktop-talent-topics-toggle"
+              class="flex items-center gap-2 text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap">
+              Talent Topics
+              <svg id="desktop-talent-topics-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4 transition-transform duration-200">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div id="desktop-talent-topics-dropdown"
+              class="absolute top-full left-0 mt-2 w-64 bg-neutral-900 border border-white/10 rounded-xl shadow-xl overflow-hidden opacity-0 invisible pointer-events-none transition-all duration-200 z-50">
+              <div class="p-2 space-y-1">
+                <a class="flex items-center px-3 py-2 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10 rounded-lg transition-colors"
+                  href="talents.html?category=professional-speakers">Best Professional Speakers</a>
+                <a class="flex items-center px-3 py-2 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10 rounded-lg transition-colors"
+                  href="talents.html?category=business">Best Business Speakers</a>
+                <a class="flex items-center px-3 py-2 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10 rounded-lg transition-colors"
+                  href="talents.html?category=diversity-inclusion">Best Diversity & Inclusion Speakers</a>
+                <a class="flex items-center px-3 py-2 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10 rounded-lg transition-colors"
+                  href="talents.html?category=technology">Best Technology Speakers</a>
+                <a class="flex items-center px-3 py-2 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10 rounded-lg transition-colors"
+                  href="talents.html?category=sports-motivational">Best Sports Motivational Speakers</a>
+                <a class="flex items-center px-3 py-2 text-sm font-medium text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10 rounded-lg transition-colors"
+                  href="talents.html?category=politics-world-issues">Best Politics/World Issue Speakers</a>
+              </div>
+            </div>
+          </div>
+
+          <a class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
+            href="recent-bookings.html">Recent Bookings</a><a
+            class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
+            href="about-us.html">About Us</a><a
+            class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
+            href="blog.html">Blog</a><a
+            class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
+            href="contact.html">Contact</a>
+        </div>
+        <div class="flex-1 flex items-center justify-end gap-3">
+          <button id="search-btn-desktop"
+            class="hidden md:flex h-10 items-center gap-2 rounded-full border border-neutral-700 bg-neutral-800/80 px-3 text-neutral-400 shadow-soft hover:bg-primary-500/10 hover:text-white transition-colors"
+            aria-label="Search talent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-search h-4 w-4 text-primary-400">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg><span class="text-xs font-medium">Search</span>
+          </button>
+          <div class="flex items-center gap-2">
+            <div class="hidden lg:block"></div>
+            <button id="lg-menu-toggle"
+              class="flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-700 bg-neutral-800 text-white shadow-soft hover:bg-primary-500/10 lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-menu h-5 w-5">
                 <line x1="4" x2="20" y1="12" y2="12"></line>
                 <line x1="4" x2="20" y1="6" y2="6"></line>
                 <line x1="4" x2="20" y1="18" y2="18"></line>
@@ -245,90 +417,9 @@
             </button>
           </div>
         </div>
-        <div
-          class="hidden md:flex h-18 items-center justify-between gap-4 py-3"
-        >
-          <div class="flex items-center gap-3 flex-shrink-0 flex-1">
-            <a class="flex items-center gap-2" href="/"
-              ><img
-                alt="Endorsco"
-                loading="lazy"
-                width="0"
-                height="0"
-                class="block h-11 w-auto"
-                style="color: transparent"
-                sizes="100vw"
-                src="/images/logo.svg"
-            /></a>
-          </div>
-          <div
-            class="hidden lg:flex items-center justify-evenly gap-5 xl:gap-7 flex-[2]"
-          >
-            <a
-              class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
-              href="/talent"
-              >Actors &amp; Talent</a
-            ><a
-              class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
-              href="/recent-celebrity-bookings"
-              >Recent Bookings</a
-            ><a
-              class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
-              href="/about-us"
-              >About Us</a
-            ><a
-              class="text-[0.875rem] xl:text-[0.9375rem] font-semibold text-white hover:text-primary-300 transition-colors whitespace-nowrap"
-              href="/contact"
-              >Contact</a
-            >
-          </div>
-          <div class="flex flex-shrink-0 items-center justify-end gap-3 flex-1">
-            <button
-              class="hidden md:flex h-10 items-center gap-2 rounded-full border border-neutral-700 bg-neutral-800/80 px-3 text-neutral-400 shadow-soft hover:bg-primary-500/10 hover:text-white transition-colors"
-              aria-label="Search talent"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-search h-4 w-4 text-primary-400"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path></svg
-              ><span class="text-xs font-medium">Search</span>
-            </button>
-            <div class="flex items-center gap-2">
-              <button
-                class="flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-700 bg-neutral-800 text-white shadow-soft hover:bg-primary-500/10 lg:hidden"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-menu h-5 w-5"
-                >
-                  <line x1="4" x2="20" y1="12" y2="12"></line>
-                  <line x1="4" x2="20" y1="6" y2="6"></line>
-                  <line x1="4" x2="20" y1="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
-    </header>
+    </div>
+  </header>
     
     <main
       class="min-h-screen bg-background text-foreground transition-colors duration-300"
@@ -763,169 +854,174 @@
       </div> <!-- End of talent-main-content -->
     </main>
     <footer class="bg-neutral-900 text-white relative overflow-hidden">
-      <div class="absolute inset-0 opacity-5">
-        <div
-          class="absolute inset-0"
-          style="
-            background-image: radial-gradient(
-                circle at 25% 25%,
-                white 2px,
-                transparent 2px
-              ),
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0" style="
+            background-image:
+              radial-gradient(circle at 25% 25%, white 2px, transparent 2px),
               radial-gradient(circle at 75% 75%, white 2px, transparent 2px);
             background-size: 60px 60px;
-          "
-        ></div>
-      </div>
-      <div class="relative">
-        <div class="container-custom py-16">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
-            <div class="col-span-1 md:col-span-2">
-              <a class="flex items-center mb-6" href="/"
-                ><img
-                  alt="Endorsco"
-                  src="/images/logo.svg"
-                  class="h-10 w-auto brightness-0 invert"
-              /></a>
-              <p class="text-neutral-400 mb-8 text-sm leading-relaxed max-w-sm">
-                Endorsco is a premier speakers bureau and talent
-                marketing agency connecting clients with world-class speakers
-                and celebrities for over 25 years.
-              </p>
-              <div class="space-y-4 mb-8">
-                <div class="flex items-center space-x-3">
-                  <div class="p-2 bg-primary-600/20 text-primary-400 rounded-lg">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <span class="font-bold text-lg">+44-7351-271379</span>
+          "></div>
+    </div>
+    <div class="relative">
+      <div class="container-custom py-16">
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-8">
+          <div class="col-span-2">
+            <a class="flex items-center mb-6" href="/"><img alt="SpeakerBookingAgency 25 Years" loading="lazy"
+                width="285" height="48" class="filter brightness-0 invert" style="color: transparent" sizes="100vw"
+                srcset="
+                   /images/logo-2.svg   640w,
+                   /images/logo-2.svg   828w,
+                   /images/logo-2.svg 1200w,
+                   /images/logo-2.svg 1920w
+                  " src="/images/logo-2.svg" /></a>
+            <p class="text-neutral-400 mb-6 text-sm leading-relaxed max-w-sm">
+              Endorsco is a talent bureau and marketing agency connecting
+              clients with world-class talents and celebrities.
+            </p>
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center space-x-3">
+                <div class="p-2 bg-primary-600/20 text-primary-400 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-phone h-4 w-4">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
                 </div>
-                <div class="flex items-center space-x-3 text-neutral-400">
-                  <div class="p-2 bg-neutral-800 rounded-lg">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                    </svg>
-                  </div>
-                  <span class="text-sm">booking@endorscobookings.com</span>
+                <div>
+                  <div class="font-semibold">+44-7351-271379</div>
                 </div>
               </div>
-              <div class="flex space-x-3">
-                <a
-                  href="#"
-                  class="p-2.5 bg-neutral-800 hover:bg-primary-600 rounded-xl transition-all duration-300"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                    ></path>
+              <div class="flex items-center space-x-3">
+                <div class="p-2 bg-primary-600/20 text-primary-400 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-mail h-4 w-4">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </svg>
-                </a>
-                <a
-                  href="#"
-                  class="p-2.5 bg-neutral-800 hover:bg-primary-600 rounded-xl transition-all duration-300"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
-                    ></path>
-                  </svg>
-                </a>
+                </div>
+                <span class="text-xs sm:text-sm">booking@endorscobookings.com</span>
               </div>
             </div>
-            <div>
-              <h3 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">
-                Talent Topics
-              </h3>
-              <ul class="space-y-3">
-                <li>
-                  <a href="/talent" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">All Talent</a>
-                </li>
-                <li>
-                  <a href="#" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">Business Icons</a>
-                </li>
-                <li>
-                  <a href="#" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">Motivational</a>
-                </li>
-                <li>
-                  <a href="#" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">Celebrity Chefs</a>
-                </li>
-                <li>
-                  <a href="#" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">Sports Stars</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">
-                Quick Links
-              </h3>
-              <ul class="space-y-3">
-                <li>
-                  <a href="/about-us" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">About Us</a>
-                </li>
-                <li>
-                  <a href="/recent-celebrity-bookings" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">Recent Bookings</a>
-                </li>
-                <li>
-                  <a href="/contact" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">Contact Us</a>
-                </li>
-                <li>
-                  <a href="#" class="text-neutral-400 hover:text-primary-400 transition-colors text-sm">FAQ</a>
-                </li>
-              </ul>
+            <div class="flex space-x-3 pl-0.5 pb-0.5">
+              <a target="_blank"
+                class="p-3 bg-neutral-800 hover:bg-primary-600 rounded-xl transition-all duration-300 hover:scale-110 group"
+                aria-label="Facebook" href="https://www.facebook.com/SpeakerBookingAgency"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-facebook h-5 w-5 group-hover:text-white">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg></a><a target="_blank"
+                class="p-3 bg-neutral-800 hover:bg-primary-600 rounded-xl transition-all duration-300 hover:scale-110 group"
+                aria-label="X" href="https://x.com/SBASpeakers/"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-twitter h-5 w-5 group-hover:text-white">
+                  <path
+                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                  </path>
+                </svg></a><a target="_blank"
+                class="p-3 bg-neutral-800 hover:bg-primary-600 rounded-xl transition-all duration-300 hover:scale-110 group"
+                aria-label="Instagram" href="https://www.instagram.com/sbaspeakers?igsh=MTBsZXc2YzJwazJqdw=="><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-instagram h-5 w-5 group-hover:text-white">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg></a><a target="_blank"
+                class="p-3 bg-neutral-800 hover:bg-primary-600 rounded-xl transition-all duration-300 hover:scale-110 group"
+                aria-label="LinkedIn" href="https://www.linkedin.com/company/speaker-booking-agency/"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-linkedin h-5 w-5 group-hover:text-white">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect width="4" height="12" x="2" y="9"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg></a>
             </div>
           </div>
+          <div>
+            <h3 class="font-bold text-white mb-4 capitalize">
+              Talent Topics
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="talents.html?category=professional-speakers">Best Professional Speakers</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="talents.html?category=business">Best Business Speakers</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="talents.html?category=diversity-inclusion">Best Diversity &amp; Inclusion Speakers</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="talents.html?category=technology">Best Technology Speakers</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="talents.html?category=sports-motivational">Best Sports Motivational Speakers</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="talents.html?category=politics-world-issues">Best Politics/World Issue Speakers</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-4 capitalize">
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="talents.html">Actors & Talent</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="recent-bookings.html">Recent Bookings</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="about-us.html">About Us</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="blog.html">Blog</a>
+              </li>
+              <li>
+                <a class="text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm hover:translate-x-1 transform inline-block"
+                  href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="border-t border-neutral-800">
-          <div class="container-custom py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <p class="text-neutral-500 text-xs">
-                © 2026 Endorsco. All rights reserved. Registered trademark of SBA.
+      </div>
+      <div class="border-t border-neutral-800">
+        <div class="container-custom py-8">
+          <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+              <p class="text-neutral-400 text-sm">
+                © 2026 Endorsco. All rights reserved.
               </p>
               <div class="flex space-x-6">
-                <a href="#" class="text-neutral-500 hover:text-white text-xs transition-colors">Privacy Policy</a>
-                <a href="#" class="text-neutral-500 hover:text-white text-xs transition-colors">Terms of Service</a>
+                <a class="text-neutral-400 hover:text-primary-400 text-sm transition-colors duration-300"
+                  href="/privacy-policy">Privacy Policy</a><a
+                  class="text-neutral-400 hover:text-primary-400 text-sm transition-colors duration-300"
+                  href="/terms-of-service">Terms of Service</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
     <div
       class="fixed bottom-0 inset-x-0 z-50 lg:hidden pb-[env(safe-area-inset-bottom)]"
     >
@@ -976,7 +1072,149 @@
     <script src="js/animation.js"></script>
     <script src="/js/loading.js"></script>
     <script src="js/booking.js"></script>
+    <script src="js/search.js"></script>
 
+    <!-- Search Dialog Backdrop -->
+    <div id="search-dialog-backdrop" class="fixed inset-0 z-40 bg-black/80 hidden" data-state="closed"></div>
+    <!-- Search Dialog -->
+     <div
+      role="dialog"
+      id="search-dialog"
+      aria-describedby="search-dialog-description"
+      aria-labelledby="search-dialog-title"
+      data-state="closed"
+      class="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-w-4xl h-[70dvh] md:h-[90vh] p-0 gap-0 overflow-hidden bg-white dark:bg-neutral-950 border border-neutral-100 dark:border-neutral-800 shadow-2xl hidden"
+      tabindex="-1"
+      style="pointer-events: auto"
+    >
+      <div class="flex flex-col h-full min-h-0">
+        <div
+          class="relative border-b border-neutral-100 dark:border-neutral-800"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-violet-50 opacity-60 dark:opacity-20"
+          ></div>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-neutral-900/70 via-neutral-900/60 to-neutral-950/70 hidden dark:block"
+          ></div>
+          <div
+            class="relative flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-2.5 sm:py-5"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search h-4 w-4 sm:h-5 sm:w-5 text-neutral-400 dark:text-neutral-500 flex-shrink-0"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path></svg
+            ><input
+              id="search-dialog-input"
+              class="flex w-full rounded-md border-input py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-sm sm:text-base placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-neutral-900 dark:text-neutral-50 px-0 h-auto"
+              placeholder="Search speakers..."
+              type="text"
+              value=""
+            /><button
+              id="search-dialog-close"
+              class="p-1.5 sm:p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors flex-shrink-0"
+              aria-label="Close"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-x h-4 w-4 sm:h-5 sm:w-5 text-neutral-600 dark:text-neutral-300"
+              >
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          id="search-results-container"
+          class="flex-1 overflow-y-auto bg-white dark:bg-neutral-950 min-h-0"
+        >
+          <div id="search-welcome" class="flex items-center justify-center p-4 sm:p-8 lg:p-12">
+            <div class="text-center space-y-3 sm:space-y-6 lg:space-y-8 max-w-2xl w-full px-4 sm:px-0">
+              <div class="relative inline-block">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-blue-500/20 blur-3xl animate-pulse"></div>
+                <img alt="Speakers logo" fetchpriority="high" width="160" height="160" decoding="async" class="h-16 w-auto sm:h-20 lg:h-24 block dark:hidden" src="/images/star.svg">
+                <img alt="Speakers logo" fetchpriority="high" width="160" height="160" decoding="async" class="h-16 w-auto sm:h-20 lg:h-24 hidden dark:block" src="/images/star.svg">
+              </div>
+              <div class="space-y-2 sm:space-y-3">
+                <h3 class="text-base sm:text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-neutral-50">Discover World-Class Speakers</h3>
+                <p class="text-neutral-600 dark:text-neutral-300 text-xs sm:text-base lg:text-lg leading-snug sm:leading-relaxed max-w-xl mx-auto">Search thousands of professional speakers and inspiring speakers for your next event</p>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 pt-2 sm:pt-4">
+                <div class="flex flex-col items-center group p-2 sm:p-5 lg:p-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg sm:rounded-2xl hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
+                  <div class="bg-gradient-to-br from-blue-500 to-blue-600 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mb-1.5 sm:mb-3 lg:mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-white">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                  <p class="text-[10px] sm:text-sm font-bold text-neutral-900 dark:text-neutral-100 leading-tight">Speakers</p>
+                  <p class="text-[9px] sm:text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 sm:mt-1 leading-tight">Pro speakers</p>
+                </div>
+                <div class="flex flex-col items-center group p-2 sm:p-5 lg:p-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg sm:rounded-2xl hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
+                  <div class="bg-gradient-to-br from-violet-500 to-purple-600 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mb-1.5 sm:mb-3 lg:mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grid3x3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-white">
+                      <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                      <path d="M3 9h18"></path>
+                      <path d="M3 15h18"></path>
+                      <path d="M9 3v18"></path>
+                      <path d="M15 3v18"></path>
+                    </svg>
+                  </div>
+                  <p class="text-[10px] sm:text-sm font-bold text-neutral-900 dark:text-neutral-100 leading-tight">Categories</p>
+                  <p class="text-[9px] sm:text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 sm:mt-1 leading-tight">By expertise</p>
+                </div>
+                <div class="flex flex-col items-center group p-2 sm:p-5 lg:p-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg sm:rounded-2xl hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
+                  <div class="bg-gradient-to-br from-emerald-500 to-teal-600 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mb-1.5 sm:mb-3 lg:mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-white">
+                      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                      <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                      <path d="M10 9H8"></path>
+                      <path d="M16 13H8"></path>
+                      <path d="M16 17H8"></path>
+                    </svg>
+                  </div>
+                  <p class="text-[10px] sm:text-sm font-bold text-neutral-900 dark:text-neutral-100 leading-tight">Articles</p>
+                  <p class="text-[9px] sm:text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 sm:mt-1 leading-tight">Insights</p>
+                </div>
+                <div class="flex flex-col items-center group p-2 sm:p-5 lg:p-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg sm:rounded-2xl hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
+                  <div class="bg-gradient-to-br from-amber-500 to-orange-600 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mb-1.5 sm:mb-3 lg:mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-white">
+                      <line x1="8" x2="21" y1="6" y2="6"></line>
+                      <line x1="8" x2="21" y1="12" y2="12"></line>
+                      <line x1="8" x2="21" y1="18" y2="18"></line>
+                      <line x1="3" x2="3.01" y1="6" y2="6"></line>
+                      <line x1="3" x2="3.01" y1="12" y2="12"></line>
+                      <line x1="3" x2="3.01" y1="18" y2="18"></line>
+                    </svg>
+                  </div>
+                  <p class="text-[10px] sm:text-sm font-bold text-neutral-900 dark:text-neutral-100 leading-tight">Lists</p>
+                  <p class="text-[9px] sm:text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 sm:mt-1 leading-tight">Collections</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Booking Modal -->
     <div id="booking-modal" class="fixed inset-0 z-[99] flex items-center justify-center p-2 sm:p-4 hidden"
       style="height: 100dvh">

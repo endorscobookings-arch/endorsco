@@ -367,9 +367,9 @@ function initBookingModal() {
           data.ip = null;
         }
         
-        // Submit to API
+        // Submit to API - /api/booking-requests/modal endpoint for modal requests
         try {
-          const response = await fetch('/api/check-availability', {
+          const response = await fetch(`${API_BASE_URL}/booking-requests/modal`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -486,6 +486,23 @@ async function fetchTalentBySlug(slug) {
   }
 }
 
+function generatePopularTopicCardSkeleton() {
+  return `
+    <a
+      class="group relative flex min-h-[150px] items-center gap-3 overflow-hidden rounded-xl bg-white px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.15)] border border-gray-200"
+      href="#">
+      <div
+        class="relative h-28 w-28 shrink-0 overflow-hidden rounded-lg bg-neutral-200 shadow-inner shadow-black/10 animate-pulse">
+      </div>
+      <div class="flex-1 space-y-2">
+        <div class="h-5 bg-neutral-300 rounded animate-pulse w-3/4"></div>
+        <div class="h-4 bg-neutral-300 rounded animate-pulse w-full"></div>
+        <div class="h-4 bg-neutral-300 rounded animate-pulse w-2/3"></div>
+      </div>
+    </a>
+  `;
+}
+
 function generatePopularTopicCard(talent) {
   const fullName = getFullName(talent);
   const title = talent.title || "";
@@ -502,8 +519,9 @@ function generatePopularTopicCard(talent) {
       <div
         class="relative h-28 w-28 shrink-0 overflow-hidden rounded-lg bg-neutral-200 shadow-inner shadow-black/10">
         <img alt="${fullName}" loading="lazy" decoding="async" class="object-cover"
-          style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-          src="${talent.headshotUrl || ""}">
+          style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent; opacity: 0; transition: opacity 0.3s ease-in-out;"
+          src="${talent.headshotUrl || ""}"
+          onload="this.style.opacity = '1'">
       </div>
       <div class="flex-1">
         <p class="text-lg font-semibold text-gray-900 group-hover:text-amber-600">${fullName}</p>
@@ -513,14 +531,7 @@ function generatePopularTopicCard(talent) {
   `;
 }
 
-// Function to filter talents by category
-function filterTalentsByCategory(category) {
-  return allTalents.filter(talent => {
-    const hasInSpeakingCategories = talent.speakingCategories?.some(cat => cat.name === category);
-    const hasInCategories = talent.categories?.some(cat => cat.category?.name === category);
-    return hasInSpeakingCategories || hasInCategories;
-  });
-}
+
 
 // Function to update active button styling
 function setActiveButton(category) {
@@ -591,10 +602,10 @@ function updateHeaderCard(category) {
 }
 
 // Function to render talents in both desktop and mobile views
-function renderTalentsForCategory(category) {
-  const filteredTalents = filterTalentsByCategory(category).slice(0, 8);
+function renderTalentsForCategory(talents) {
+  const talentsToRender = talents.slice(0, 8);
   
-  console.log(`Found ${filteredTalents.length} ${category}:`, filteredTalents);
+  console.log(`Rendering ${talentsToRender.length} talents:`, talentsToRender);
   
   // Render desktop view
   const container = document.getElementById("popular-topics-talents");
@@ -603,7 +614,7 @@ function renderTalentsForCategory(category) {
     container.innerHTML = "";
     if (headerCard) container.appendChild(headerCard);
     
-    filteredTalents.forEach(talent => {
+    talentsToRender.forEach(talent => {
       container.innerHTML += generatePopularTopicCard(talent);
     });
   }
@@ -614,8 +625,8 @@ function renderTalentsForCategory(category) {
     const cardsPerSlide = 3;
     let slidesHTML = "";
     
-    for (let i = 0; i < filteredTalents.length; i += cardsPerSlide) {
-      const slideTalents = filteredTalents.slice(i, i + cardsPerSlide);
+    for (let i = 0; i < talentsToRender.length; i += cardsPerSlide) {
+      const slideTalents = talentsToRender.slice(i, i + cardsPerSlide);
       slidesHTML += `
         <div class="w-full flex-shrink-0 space-y-3 px-1">
           ${slideTalents.map(talent => {
@@ -634,8 +645,9 @@ function renderTalentsForCategory(category) {
                 <div
                   class="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-neutral-200 shadow-inner shadow-black/10">
                   <img alt="${fullName}" loading="lazy" decoding="async" class="object-cover"
-                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-                    src="${talent.headshotUrl || ""}">
+                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent; opacity: 0; transition: opacity 0.3s ease-in-out;"
+                    src="${talent.headshotUrl || ""}"
+                    onload="this.style.opacity = '1'">
                 </div>
                 <div class="flex-1">
                   <p class="text-base font-semibold text-gray-900 group-hover:text-amber-600">${fullName}</p>
@@ -655,6 +667,41 @@ function renderTalentsForCategory(category) {
   initCarousels();
 }
 
+// Function to render skeleton cards for category section
+function renderCategorySkeletons() {
+  // Render desktop view
+  const container = document.getElementById("popular-topics-talents");
+  if (container) {
+    const headerCard = document.getElementById("category-header-card");
+    container.innerHTML = "";
+    if (headerCard) container.appendChild(headerCard);
+    
+    for (let i = 0; i < 8; i++) {
+      container.innerHTML += generatePopularTopicCardSkeleton();
+    }
+  }
+  
+  // Render mobile view
+  const mobileContainer = document.getElementById("popular-topics-talents-mobile");
+  if (mobileContainer) {
+    const cardsPerSlide = 3;
+    let slidesHTML = "";
+    
+    for (let i = 0; i < 8; i += cardsPerSlide) {
+      slidesHTML += `
+        <div class="w-full flex-shrink-0 space-y-3 px-1">
+          ${[0, 1, 2].map(() => generatePopularTopicCardSkeleton()).join("")}
+        </div>
+      `;
+    }
+    
+    mobileContainer.innerHTML = slidesHTML;
+  }
+  
+  // Re-initialize carousels
+  initCarousels();
+}
+
 // Function to handle category button clicks
 function handleCategoryClick(category) {
   // Update current index to match the clicked category
@@ -663,7 +710,18 @@ function handleCategoryClick(category) {
   
   setActiveButton(category);
   updateHeaderCard(category);
-  renderTalentsForCategory(category);
+  
+  // Show skeletons first
+  renderCategorySkeletons();
+  
+  // Get cached talents for this category
+  const talents = talentsByCategory[category] || [];
+  allTalents = talents; // Store the current category's talents
+  
+  // Render the cached talents after a small delay to let skeletons show
+  setTimeout(() => {
+    renderTalentsForCategory(talents);
+  }, 100);
   
   // Reset the auto-switch timer
   resetAutoSwitch();
@@ -725,53 +783,64 @@ function addCategoryButtonListeners() {
   });
 }
 
-async function fetchAllTalents() {
+async function fetchTalentsByCategory(categoryName) {
   try {
-    const endpoints = [
-      `${API_BASE_URL}/talents`,
-      `${API_BASE_URL}/talents/all`
-    ];
+    const categorySlug = categorySlugMap[categoryName];
+    const params = new URLSearchParams({
+      limit: "8", // Limit to 8 talents as before
+    });
     
-    for (const url of endpoints) {
-      try {
-        const res = await fetch(url);
-        if (res.ok) {
-          let data = await res.json();
-          
-          // Parse the response properly to get the talents array
-          let talents = [];
-          if (Array.isArray(data)) {
-            talents = data;
-          } else if (data.talents && Array.isArray(data.talents)) {
-            talents = data.talents;
-          } else if (data.data && Array.isArray(data.data)) {
-            talents = data.data;
-          }
-          
-          if (talents.length > 0) {
-            console.log("Fetched all talents successfully!", talents);
-            allTalents = talents;
-            
-            // Add event listeners to category buttons
-            addCategoryButtonListeners();
-            
-            // Initial render for "Business Speakers"
-            handleCategoryClick("Business Speakers");
-            
-            return talents;
-          }
-        }
-      } catch (e) {
-        // Try next endpoint
-        continue;
-      }
+    if (categorySlug) {
+      params.append("category", categorySlug);
     }
-    console.log("Could not fetch all talents from any endpoint");
+
+    const url = `${API_BASE_URL}/talents?${params.toString()}`;
+    console.log(`Fetching talents for category: ${categoryName} from ${url}`);
+    
+    const res = await fetch(url);
+    if (res.ok) {
+      let data = await res.json();
+      
+      // Parse the response properly to get the talents array
+      let talents = [];
+      if (Array.isArray(data)) {
+        talents = data;
+      } else if (data.talents && Array.isArray(data.talents)) {
+        talents = data.talents;
+      } else if (data.data && Array.isArray(data.data)) {
+        talents = data.data;
+      }
+      
+      console.log(`Fetched ${talents.length} talents for ${categoryName}`, talents);
+      return talents;
+    }
+    console.log(`Could not fetch talents for ${categoryName}`);
     return [];
   } catch (err) {
-    console.error("Error fetching all talents:", err);
+    console.error(`Error fetching talents for ${categoryName}:`, err);
     return [];
   }
+}
+
+async function initializeCategorySection() {
+  // Add event listeners to category buttons
+  addCategoryButtonListeners();
+  
+  // Show skeletons first for initial load
+  renderCategorySkeletons();
+  
+  // Fetch talents for all categories and cache them in the background
+  console.log("Fetching talents for all categories...");
+  categories.forEach(async (category) => {
+    const talents = await fetchTalentsByCategory(category);
+    talentsByCategory[category] = talents;
+    
+    // If this is the initial category (Business Speakers), render it as soon as it's loaded
+    if (category === "Business Speakers") {
+      handleCategoryClick(category);
+    }
+  });
+  console.log("All talents caching in background...");
 }
 
 async function getArtists() {
@@ -787,27 +856,94 @@ async function getArtists() {
       "misty-copeland"
     ];
 
-    const talents = await Promise.all(slugs.map(fetchTalentBySlug));
-    const validTalents = talents.filter(t => t !== null);
-    
     const talentsContainer = document.getElementById("talents-1");
     const talentsContainerMobile = document.getElementById("talents-1-mobile");
     
+    // Step 1: Show skeleton cards for all talents first
     if (talentsContainer) {
       talentsContainer.innerHTML = "";
-      validTalents.forEach(function (speaker) {
-        talentsContainer.innerHTML += generateSpeakers1(speaker);
+      slugs.forEach(() => {
+        talentsContainer.innerHTML += generateSpeakers1Skeleton();
       });
     }
     
     if (talentsContainerMobile) {
       talentsContainerMobile.innerHTML = "";
-      validTalents.forEach(function (speaker) {
-        talentsContainerMobile.innerHTML += generateSpeakers1(speaker, true);
+      slugs.forEach(() => {
+        talentsContainerMobile.innerHTML += generateSpeakers1Skeleton(true);
       });
     }
-
-    // Run custom initialization logic specifically to apply native scroll behaviors
+    
+    // Step 2: Fetch talents one by one and replace skeletons
+    const talentPromises = slugs.map(async (slug, index) => {
+      try {
+        const talent = await fetchTalentBySlug(slug);
+        if (talent) {
+          // Replace desktop skeleton
+          if (talentsContainer && talentsContainer.children[index]) {
+            talentsContainer.children[index].outerHTML = generateSpeakers1(talent);
+            
+            // Handle image load for smooth transition
+            const img = talentsContainer.children[index].querySelector('img');
+            if (img && img.src) {
+              img.style.opacity = '0';
+              img.style.transition = 'opacity 0.3s ease-in-out';
+              img.onload = () => {
+                img.style.opacity = '1';
+              };
+              // If image is already loaded
+              if (img.complete) {
+                img.style.opacity = '1';
+              }
+            }
+          }
+          
+          // Replace mobile skeleton
+          if (talentsContainerMobile && talentsContainerMobile.children[index]) {
+            talentsContainerMobile.children[index].outerHTML = generateSpeakers1(talent, true);
+            
+            // Handle image load for smooth transition on mobile
+            const imgMobile = talentsContainerMobile.children[index].querySelector('img');
+            if (imgMobile && imgMobile.src) {
+              imgMobile.style.opacity = '0';
+              imgMobile.style.transition = 'opacity 0.3s ease-in-out';
+              imgMobile.onload = () => {
+                imgMobile.style.opacity = '1';
+              };
+              // If image is already loaded
+              if (imgMobile.complete) {
+                imgMobile.style.opacity = '1';
+              }
+            }
+          }
+        } else {
+          // If talent is null, remove the skeleton
+          if (talentsContainer && talentsContainer.children[index]) {
+            talentsContainer.children[index].remove();
+          }
+          if (talentsContainerMobile && talentsContainerMobile.children[index]) {
+            talentsContainerMobile.children[index].remove();
+          }
+        }
+        return talent;
+      } catch (err) {
+        console.error(`Error fetching talent with slug ${slug}:`, err);
+        // Remove skeleton on error
+        if (talentsContainer && talentsContainer.children[index]) {
+          talentsContainer.children[index].remove();
+        }
+        if (talentsContainerMobile && talentsContainerMobile.children[index]) {
+          talentsContainerMobile.children[index].remove();
+        }
+        return null;
+      }
+    });
+    
+    // Wait for all talents to load
+    const talents = await Promise.all(talentPromises);
+    const validTalents = talents.filter(t => t !== null);
+    
+    // Re-initialize carousels after all content is loaded
     initCarousels();
     return validTalents;
   } catch (err) {
@@ -818,10 +954,21 @@ async function getArtists() {
 // Get specific talents
 getArtists();
 
-// Store all fetched talents globally
+// Store fetched talents globally
 let allTalents = [];
+let talentsByCategory = {}; // Cache for talents by category
 let currentCategoryIndex = 0;
 let autoSwitchInterval = null;
+
+// Map category display names to API slugs
+const categorySlugMap = {
+  "Professional Speakers": "top-black-keynote-speakers",
+  "Business Speakers": "business-speakers",
+  "Diversity Speakers": "diversity-speakers",
+  "Technology Speakers": "technology-speakers",
+  "Sports Motivational Speakers": "sports-motivational-speakers",
+  "Politics/World Issue Speakers": "government-and-political-officials"
+};
 
 // List of all category names in order
 const categories = [
@@ -957,10 +1104,42 @@ document.addEventListener('DOMContentLoaded', () => {
   startAutoSwitch();
   // Fetch blogs on load
   fetchAndPopulateBlogs();
+  // Initialize category section
+  initializeCategorySection();
 });
 
-// Fetch all talents on page load
-fetchAllTalents();
+// Generate a skeleton card for the speakers1 format
+function generateSpeakers1Skeleton(isMobile = false) {
+  return ` <div
+                role="group"
+                    aria-roledescription="slide"
+                    class="min-w-0 shrink-0 grow-0 ${isMobile ? 'pl-2 pt-4' : 'basis-1/3 lg:basis-1/4 xl:basis-1/5 pl-4 pr-2 pt-6'}"
+                    ${isMobile ? 'style="flex-basis: 60%;"' : ''}
+                      >
+                        <article
+                          class="group relative flex h-full w-full flex-col gap-3 sm:gap-4 overflow-hidden rounded-xl bg-white border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] dark:bg-[#0f0f0f] dark:border-gray-800"
+                        >
+                          <div class="relative block">
+                            <div class="relative aspect-square w-full bg-neutral-200 dark:bg-neutral-700 animate-pulse">
+                            </div>
+                          </div>
+                          <div
+                            class="flex flex-col gap-1 sm:gap-1.5 text-left px-3 sm:px-4"
+                          >
+                            <div class="h-5 bg-neutral-300 dark:bg-neutral-600 rounded animate-pulse w-3/4"></div>
+                            <div class="h-1 w-10 rounded-full bg-neutral-300 dark:bg-neutral-600 animate-pulse mt-1"></div>
+                            <div class="h-4 bg-neutral-300 dark:bg-neutral-600 rounded animate-pulse w-1/2 mt-2"></div>
+                            <div class="h-3 bg-neutral-300 dark:bg-neutral-600 rounded animate-pulse w-full mt-1"></div>
+                            <div class="h-3 bg-neutral-300 dark:bg-neutral-600 rounded animate-pulse w-3/4 mt-1"></div>
+                          </div>
+                          <div
+                            class="mt-auto flex flex-col items-start gap-1 px-4 pb-4"
+                          >
+                            <div class="h-4 bg-neutral-300 dark:bg-neutral-600 rounded animate-pulse w-1/3"></div>
+                          </div>
+                        </article>
+                    </div>`;
+}
 
 function getFeeLabel(speaker) {
   if (typeof speaker.feeRange === "string") return speaker.feeRange;

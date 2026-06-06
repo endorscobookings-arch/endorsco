@@ -510,13 +510,48 @@
                 }
             ],
             "testimonials": [],
-            "faqs"
+            "faqs": [
+                {
+                    "question": "How much does it cost to book Misty Copeland?",
+                    "answer": "Misty Copeland's speaking fee ranges from $50,000 to $100,000. Final pricing depends on event type, location, and date. Contact Speaker Booking Agency at 1-888-752-5831 for an exact quote."
+                },
+                {
+                    "question": "How do I book Misty Copeland for my event?",
+                    "answer": "To book Misty Copeland, contact Speaker Booking Agency at 1-888-752-5831 or email bookings@speakerbookingagency.com. You can also submit a booking request at https://www.speakerbookingagency.com/booking-request/misty-copeland. Our team will check availability and provide a customized quote within 24 hours."
+                },
+                {
+                    "question": "What does Misty Copeland speak about?",
+                    "answer": "Misty Copeland is available for keynote speeches, corporate events, and personal appearances. Contact us for topic details."
+                },
+                {
+                    "question": "Is Misty Copeland available for corporate events?",
+                    "answer": "Yes, Misty Copeland is available for corporate events, conferences, galas, fundraisers, and private appearances. Speaker Booking Agency handles all logistics including travel, scheduling, and contracts. Call 1-888-752-5831 to check availability for your event date."
+                },
+                {
+                    "question": "What is Misty Copeland's speaking fee range?",
+                    "answer": "Misty Copeland's speaking fee ranges from $50,000 to $100,000. Final pricing depends on event type, location, and date. Contact Speaker Booking Agency at 1-888-752-5831 for an exact quote."
+                }
+            ],
+            "availableFor": [
+                "Corporate Appearances",
+                "Speaking Engagements",
+                "Virtual Events",
+                "Moderated Q&A Sessions",
+                "Fireside Chats",
+                "Meet-And-Greets"
+            ],
+            "_count": {
+                "blogs": 2,
+                "inquiries": 15
+            },
+            "feeRangeId": 5,
+            "geographicLocationId": 32
         }
-    ]
-}{
-    "timestamp": "2026-06-05T08:22:26.653+00:00",
-    "status": 200,
-    "error": "OK",
-    "message": "",
-    "path": "/api/talents/"
+    ],
+    "pagination": {
+        "page": 1,
+        "limit": 12,
+        "totalItems": 65,
+        "totalPages": 6
+    }
 }

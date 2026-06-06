@@ -948,9 +948,9 @@
             data.ip = null;
           }
           
-          // Submit to API
+          // Submit to API - /api/booking-requests/modal endpoint for modal requests
           try {
-            const response = await fetch('/api/check-availability', {
+            const response = await fetch(`${API_BASE_URL}/booking-requests/modal`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

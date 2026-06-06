@@ -9,6 +9,7 @@ const LIMIT = 12;
 let currentCategory = null;
 let currentSort = "most-popular";
 let currentLocation = null;
+let currentSearch = null;
 
 // Map category slugs to display names
 const categoryDisplayNames = {
@@ -27,6 +28,7 @@ function getSearchParams() {
     category: params.get("category") || null,
     sort: params.get("sort") || "most-popular",
     location: params.get("location") || null,
+    search: params.get("search") || null,
   };
 }
 
@@ -170,11 +172,18 @@ function selectLocation(locationSlug, locationName, displayElement, buttonElemen
 }
 
 // Update category display and heading
-function updateCategoryDisplay(categorySlug) {
+function updateCategoryDisplay(categorySlug, searchQuery = null) {
   const categoryDisplayNameEl = document.getElementById("category-display-name");
   const pageHeadingEl = document.querySelector("h1.text-4xl.md\\:text-5xl");
 
-  if (categorySlug) {
+  if (searchQuery) {
+    if (categoryDisplayNameEl) {
+      categoryDisplayNameEl.textContent = `Search results for "${searchQuery}"`;
+    }
+    if (pageHeadingEl) {
+      pageHeadingEl.textContent = `Search results for "${searchQuery}"`;
+    }
+  } else if (categorySlug) {
     const displayName = categoryDisplayNames[categorySlug] || categorySlug.split("-").map(word => 
       word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 
@@ -200,15 +209,24 @@ function updateCategoryDisplay(categorySlug) {
 // Generate a single skeleton loading card HTML
 function generateSkeletonCard() {
   return `
-    <div class="w-full max-w-[360px] sm:max-w-none">
+    <div class="w-full max-w-[360px] sm:max-w-none talent-skeleton">
       <article class="h-full">
-        <div class="rounded-lg border bg-card text-card-foreground shadow-sm animate-pulse">
-          <div class="p-0">
-            <div class="h-48 bg-gray-300 rounded-t-xl"></div>
-            <div class="p-4">
-              <div class="h-4 bg-gray-300 rounded mb-2"></div>
-              <div class="h-3 bg-gray-200 rounded mb-4"></div>
-              <div class="h-8 bg-gray-300 rounded"></div>
+        <div class="shadow-sm relative h-full w-full max-w-[16rem] overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-soft dark:shadow-none mx-0">
+          <div class="flex h-full flex-col">
+            <div class="relative aspect-square w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800 animate-pulse"></div>
+            <div class="p-6 flex flex-1 flex-col gap-1.5 px-2.5 py-2.5 text-left">
+              <div class="space-y-0.5">
+                <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+                <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+                <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+              </div>
+              <div class="mt-auto flex flex-col gap-1.5 pt-1.5">
+                <div class="h-10 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                <div class="h-10 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -249,8 +267,11 @@ function generateTalentCard(talent) {
                   width: 100%;
                   inset: 0px;
                   color: transparent;
+                  opacity: 0;
+                  transition: opacity 0.3s ease-in-out;
                 "
                 src="${talent.headshotUrl || ""}"
+                onload="this.style.opacity = '1'"
               />
             </div>
             <div class="p-6 flex flex-1 flex-col gap-1.5 px-2.5 py-2.5 text-left">
@@ -419,28 +440,33 @@ function renderTalents(talents, append = false) {
 }
 
 // Function to show loading indicator with skeleton cards
-function showLoading() {
+function showLoading(isAppend = false) {
   const grid = document.getElementById("talents-grid");
   if (!grid) return;
 
-  // Create a container for skeleton cards
-  const loadingDiv = document.createElement("div");
-  loadingDiv.id = "talents-loading";
-  
   // Generate LIMIT skeleton cards
   let skeletonsHtml = "";
   for (let i = 0; i < LIMIT; i++) {
     skeletonsHtml += generateSkeletonCard();
   }
-  loadingDiv.innerHTML = skeletonsHtml;
   
-  grid.appendChild(loadingDiv);
+  if (isAppend) {
+    // Find the sentinel and insert before it
+    const sentinel = document.getElementById("talents-sentinel");
+    if (sentinel) {
+      sentinel.insertAdjacentHTML("beforebegin", skeletonsHtml);
+    } else {
+      grid.insertAdjacentHTML("beforeend", skeletonsHtml);
+    }
+  } else {
+    grid.insertAdjacentHTML("beforeend", skeletonsHtml);
+  }
 }
 
 // Function to hide loading indicator
-function hideLoading() {
-  const loading = document.getElementById("talents-loading");
-  if (loading) loading.remove();
+function hideLoading(isAppend = false) {
+  const skeletons = document.querySelectorAll(".talent-skeleton");
+  skeletons.forEach(skeleton => skeleton.remove());
 }
 
 // Map sort values to API endpoints
@@ -460,8 +486,9 @@ async function fetchTalents(page = 1) {
     return;
   }
 
+  const isAppend = page > 1;
   isLoading = true;
-  showLoading();
+  showLoading(isAppend);
 
   try {
     // Build URL based on selected sort and location
@@ -470,6 +497,10 @@ async function fetchTalents(page = 1) {
       page: page.toString(),
       limit: LIMIT.toString(),
     });
+
+    if (currentSearch) {
+      params.append("search", currentSearch);
+    }
 
     let url;
     
@@ -506,9 +537,12 @@ async function fetchTalents(page = 1) {
     }
     console.log("hasMore set to:", hasMore);
 
+    // Hide loading before rendering
+    hideLoading(isAppend);
+
     // Render the talents
     if (data.data && data.data.length > 0) {
-      renderTalents(data.data, page > 1);
+      renderTalents(data.data, isAppend);
     } else if (page === 1) {
       // Show empty state if first page has no data
       const grid = document.getElementById("talents-grid");
@@ -522,9 +556,10 @@ async function fetchTalents(page = 1) {
     }
   } catch (error) {
     console.error("Error fetching talents:", error);
+    hideLoading(isAppend);
 
     // Show error message if first page fails
-    if (currentPage === 1) {
+    if (page === 1) {
       const grid = document.getElementById("talents-grid");
       if (grid) {
         grid.innerHTML = `
@@ -536,7 +571,6 @@ async function fetchTalents(page = 1) {
     }
   } finally {
     isLoading = false;
-    hideLoading();
   }
 }
 
@@ -582,6 +616,7 @@ async function initTalentsPage() {
   // Get params from URL
   const searchParams = getSearchParams();
   currentCategory = searchParams.category;
+  currentSearch = searchParams.search;
   // Add "-speakers" to category if it doesn't already have it
   if (currentCategory && !currentCategory.endsWith("-speakers")) {
     currentCategory = currentCategory + "-speakers";
@@ -590,7 +625,7 @@ async function initTalentsPage() {
   currentLocation = searchParams.location;
 
   // Update category display
-  updateCategoryDisplay(currentCategory);
+  updateCategoryDisplay(currentCategory, currentSearch);
   
   // Initialize sorting and locations dropdowns
   initSortingDropdown();
