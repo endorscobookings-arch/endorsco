@@ -848,7 +848,7 @@ async function getArtists() {
     const slugs = [
       "steve-wozniak",
       "kevin-o'leary",
-      "magic-johnson",
+      "alexander-skarsgard",
       "common",
       "ashanti",
       "robert-herjavec",
