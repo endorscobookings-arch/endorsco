@@ -3,11 +3,14 @@ package talent.endorsco.app.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class TelegramNotificationService {
@@ -42,17 +45,17 @@ public class TelegramNotificationService {
         }
         
         try {
-            // URL encode the message to handle special characters
-            String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8.toString());
-            
-            String url = String.format(
-                    "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s",
-                    botToken,
-                    chatId,
-                    encodedMessage
-            );
-            
-            restTemplate.getForObject(url, String.class);
+            String url = String.format("https://api.telegram.org/bot%s/sendMessage", botToken);
+
+            Map<String, Object> payload = new HashMap<>();
+            payload.put("chat_id", chatId);
+            payload.put("text", message);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+            HttpEntity<Map<String, Object>> request = new HttpEntity<>(payload, headers);
+            restTemplate.postForObject(url, request, String.class);
             System.out.println("Telegram message sent successfully!");
         } catch (Exception e) {
             System.err.println("Error sending Telegram message:");

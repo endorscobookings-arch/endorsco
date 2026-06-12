@@ -1,0 +1,28 @@
+
+{
+  "requestId": "req_001",
+  "timestamp": "2026-06-06T10:30:00Z",
+  "data": {
+    "preferredSpeaker": "Misty Copeland",
+    "eventDate": "2026-08-15",
+    "budget": "50000-100000",
+    "name": "John Smith",
+    "email": "john.smith@company.com",
+    "phone": "(555) 123-4567",
+    "organization": "Tech Corp Inc",
+    "eventName": "Annual Leadership Summit",
+    "eventType": "Corporate Event",
+    "attendees": 500,
+    "message": "We are looking for an inspirational speaker for our leadership summit. We'd love to have Misty Copeland share her journey and insights on resilience and breaking barriers."
+  },
+  "device": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "platform": "Win32",
+    "language": "en-US"
+  },
+  "location": {
+    "latitude": 40.7128,
+    "longitude": -74.0060
+  },
+  "ip": "192.168.1.1"
+}
