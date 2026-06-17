@@ -1,4 +1,5 @@
 public\musgraves.json
+application.properties
 talent\endorsco\app\talent\Talent$SectionListConverter.class
 public\_next\static\media\e4af272ccee01ff0-s.p.woff2
 talent\endorsco\app\talent\TalentController.class
@@ -18,12 +19,14 @@ talent\endorsco\app\talent\Talent$TestimonialListConverter$1.class
 talent\endorsco\app\talent\Talent$Section.class
 talent\endorsco\app\talent\Talent$YoutubeVideoListConverter.class
 public\_next\static\chunks\6769.b671ec032250065a.js
+public\cdn-cgi\challenge-platform\h\b\scripts\jsd\833f25fde7cb\main.js
 public\_next\images\navy.jpeg
 talent\endorsco\app\talent\Talent$CategoryAssignmentListConverter.class
 public\images\clients\ea-wordmark-network-nav-coral.svg
 public\js\search.js
 public\images\logo.svg
 public\test-data\mock-check-availability-response.json
+public\category\diversity-inclusion
 talent\endorsco\app\talent\Talent$Blog.class
 public\images\clients\BBBSA-logo_stacked-grn-wht.svg
 public\_next\static\chunks\193.244c0a726a56c122.js
@@ -32,6 +35,7 @@ talent\endorsco\app\App.class
 public\_next\static\chunks\2117-67b582223dc87958.js
 talent\endorsco\app\blog\Blog$StringListConverter$1.class
 public\images\clients\McDonalds_Logo.png
+public\booking-request.html
 public\js\loading.js
 public\_next\static\chunks\5947.5ed9f5222b2aaef8.js
 public\js\navigation.js
@@ -80,10 +84,12 @@ public\_next\static\chunks\app\talent\%5Bslug%5D\page-c8df8fd82f81f27c.js
 public\images\team\Adam-Plotkin.jpg
 public\images\star.svg
 talent\endorsco\app\talent\Talent$SpeakingCategory.class
+public\category\politics-world-issues
 public\_next\Charlie_Hunnam_(53619946303).jpg
 talent\endorsco\app\config\DatabaseSchemaUpdater.class
 public\_next\static\chunks\9523.f701c07cb3aecb07.js
 public\_next\static\chunks\7009-e96f967dcf351f92.js
+public\category\professional-speakers
 talent\endorsco\app\booking\BookingRequestRepository.class
 talent\endorsco\app\talent\Talent$SimilarSpeaker.class
 public\_next\static\chunks\3615-236e523a677e6a6d.js
@@ -99,6 +105,7 @@ talent\endorsco\app\blog\BlogRepository.class
 public\_next\static\css\7cca8e2c5137bd71.css
 talent\endorsco\app\config\CorsConfig.class
 public\_next\static\chunks\2972-0a2c7630cfae9252.js
+talent\endorsco\app\whitelist\WhitelistDTO.class
 public\_next\static\chunks\app\privacy-policy\page-a9b69e8761eb4262.js
 talent\endorsco\app\blog\Blog$CategoryAssignmentListConverter.class
 public\_next\static\chunks\3358.17945d45722287b5.js
@@ -113,6 +120,7 @@ talent\endorsco\app\talent\Talent$SpeakerListListConverter$1.class
 public\_next\c832c1a4e9bdb63a198d82e9452da089.jpg
 talent\endorsco\app\talent\converter\JsonAttributeConverter.class
 talent\endorsco\app\booking\BookingRequestController.class
+public\category\business
 talent\endorsco\app\talent\Talent$SimilarSpeakerListConverter$1.class
 public\images\team\Drew-Kraus.jpg
 talent\endorsco\app\blog\Blog$StringListConverter.class
@@ -123,10 +131,12 @@ talent\endorsco\app\booking\BookingRequestDTO.class
 talent\endorsco\app\talent\TalentController$1.class
 talent\endorsco\app\blog\BlogService.class
 talent\endorsco\app\blog\Blog$SpeakerListListConverter$1.class
+public\about-us.html
 public\js\contact.js
 talent\endorsco\app\booking\ContactInquiryDTO$LocationInfo.class
 public\_next\static\chunks\9027-7e59e8020f437a82.js
 public\test.html
+public\cdn-cgi\speculation
 public\_next\image
 talent\endorsco\app\talent\Talent$VideoListConverter$1.class
 talent\endorsco\app\whitelist\Whitelist.class
@@ -164,6 +174,7 @@ talent\endorsco\app\booking\ContactInquiryService.class
 public\_next\static\chunks\7514-9720188d20004773.js
 public\images\speaker1s.png
 public\test-data\mock-modal-booking-response.json
+public\alexander-skarsgard-birthday.html
 public\images\skarsgard.png
 talent\endorsco\app\talent\Talent$BlogListConverter.class
 talent\endorsco\app\talent\Talent$TalentCount.class
@@ -183,6 +194,7 @@ talent\endorsco\app\blog\Blog$SpeakerList.class
 public\images\logos\NOPAC.png
 public\test-data\mock-error-response.json
 talent\endorsco\app\config\TelegramNotificationService.class
+public\booking.html
 talent\endorsco\app\booking\ContactInquiryDTO$DeviceInfo.class
 public\_next\images\big-little-lies.webp
 public\_next\static\chunks\app\layout-506548e1d2e21339.js

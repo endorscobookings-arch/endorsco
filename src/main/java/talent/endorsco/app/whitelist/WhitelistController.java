@@ -27,42 +27,16 @@ public class WhitelistController {
     }
 
     @PostMapping("/whitelist")
-    public ResponseEntity<Map<String, String>> submitWhitelist(@RequestBody Map<String, Object> requestData) {
+    public ResponseEntity<Map<String, String>> submitWhitelist(@RequestBody WhitelistDTO dto) {
         try {
-            String name = null;
-            String email = null;
-            String phone = null;
-            String locationString = null;
-            String locationObject = null;
-
-            // Helper method to safely get string values
-            java.util.function.Function<Object, String> getString = obj -> {
-                if (obj == null) return null;
-                String str = obj.toString().trim();
-                return str.isEmpty() ? null : str;
-            };
-
-            name = getString.apply(requestData.get("name"));
-            email = getString.apply(requestData.get("email"));
-            phone = getString.apply(requestData.get("phone"));
-
-            Object loc = requestData.get("location");
-            if (loc != null) {
-                if (loc instanceof Map) {
-                    locationObject = objectMapper.writeValueAsString(loc);
-                } else {
-                    locationString = getString.apply(loc);
-                }
-            }
-
             // Validation
-            if (name == null || email == null) {
+            if (dto.getName() == null || dto.getEmail() == null) {
                 Map<String, String> error = new HashMap<>();
                 error.put("error", "name and email are required fields.");
                 return ResponseEntity.badRequest().body(error);
             }
 
-            if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            if (!dto.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                 Map<String, String> error = new HashMap<>();
                 error.put("error", "Invalid email format.");
                 return ResponseEntity.badRequest().body(error);
@@ -70,11 +44,13 @@ public class WhitelistController {
 
             // Save to DB
             Whitelist whitelist = new Whitelist();
-            whitelist.setName(name);
-            whitelist.setEmail(email);
-            whitelist.setPhone(phone);
-            whitelist.setLocationString(locationString);
-            whitelist.setLocationObject(locationObject);
+            whitelist.setName(dto.getName());
+            whitelist.setEmail(dto.getEmail());
+            whitelist.setPhone(dto.getPhone());
+            
+            if (dto.getLocation() != null) {
+                whitelist.setLocationString(objectMapper.writeValueAsString(dto.getLocation()));
+            }
 
             whitelistService.saveWhitelist(whitelist);
 
