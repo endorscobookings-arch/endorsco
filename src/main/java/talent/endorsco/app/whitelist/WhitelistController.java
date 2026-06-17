@@ -56,9 +56,9 @@ public class WhitelistController {
             }
 
             // Validation
-            if (name == null || email == null || phone == null) {
+            if (name == null || email == null) {
                 Map<String, String> error = new HashMap<>();
-                error.put("error", "name, email, and phone are required fields.");
+                error.put("error", "name and email are required fields.");
                 return ResponseEntity.badRequest().body(error);
             }
 
