@@ -1,0 +1,23 @@
+
+{
+  "requestId": "modal_001",
+  "timestamp": "2026-06-06T15:30:00Z",
+  "data": {
+    "name": "Sarah Johnson",
+    "email": "sarah.j@company.com",
+    "phone": "(555) 123-4567",
+    "organization": "Tech Summit Organizers",
+    "eventLocation": "San Francisco, CA",
+    "budget": "$50,000 - $100,000",
+    "eventDate": "2026-11-10",
+    "desiredSpeaker": "Misty Copeland",
+    "eventDescription": "Annual tech leadership summit focusing on resilience and breaking barriers. 500+ attendees expected."
+  },
+  "device": {
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    "platform": "iPhone",
+    "language": "en-US"
+  },
+  "location": null,
+  "ip": "192.0.2.100"
+}
