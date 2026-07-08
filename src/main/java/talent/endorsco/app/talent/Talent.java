@@ -30,7 +30,7 @@ public class Talent {
     @Column(length = 500)
     private String title;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     private String bio;
 
     private String headshotUrl;
@@ -41,10 +41,10 @@ public class Talent {
     private Boolean isActive;
     private Boolean isAvailable;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     private String feeBookingDetails;
 
-    @Column(columnDefinition = "LONGTEXT")
+   @Column(columnDefinition = "TEXT")
     private String feeBookingDetailsHtml;
 
     @Embedded
