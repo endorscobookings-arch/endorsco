@@ -419,7 +419,7 @@ public class Talent {
     public static class FAQ {
         private String question;
 
-        @Column(columnDefinition = "LONGTEXT")
+        @Column(columnDefinition = "TEXT")
         private String answer;
 
         public String getQuestion() { return question; }

@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eva Elvira Haro | Birthday Whitelist Approval</title>
+  <meta name="description" content="A private whitelist approval page for Eva Elvira Haro, confirming her place at Alexander J. Skarsgard's 50th birthday celebration in Stockholm." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body.alexander-birthday-page {
+      overflow-x: hidden;
+    }
+
+    .alexander-birthday-page .approval-banner {
+      margin-top: 1.5rem;
+      padding: 1.1rem 1.15rem;
+      background: linear-gradient(145deg, rgba(201, 162, 39, 0.16) 0%, rgba(255, 255, 255, 0.06) 100%);
+      border: 1px solid rgba(201, 162, 39, 0.28);
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(10px);
+      max-width: 36rem;
+    }
+
+    .alexander-birthday-page .approval-banner-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .alexander-birthday-page .approval-banner-badge,
+    .alexander-birthday-page .approval-banner-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .alexander-birthday-page .approval-banner-badge {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #9af0c4;
+    }
+
+    .alexander-birthday-page .approval-banner-code {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--gold-bright);
+    }
+
+    .alexander-birthday-page .approval-banner-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 0.35rem;
+    }
+
+    .alexander-birthday-page .approval-banner-copy {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    .alexander-birthday-page .approval-banner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .alexander-birthday-page .approval-banner-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 0.85rem 0.9rem;
+    }
+
+    .alexander-birthday-page .approval-banner-item-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 0.25rem;
+    }
+
+    .alexander-birthday-page .approval-banner-item-value {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .alexander-birthday-page .lux-topbar {
+      background: linear-gradient(90deg, #d6a93a 0%, #ebc35f 50%, #d6a93a 100%);
+      color: #1a1a1a;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .alexander-birthday-page .lux-topbar .container,
+    .alexander-birthday-page .lux-header .container,
+    .alexander-birthday-page .lux-footer .container {
+      max-width: 68rem;
+      margin: 0 auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .alexander-birthday-page .lux-topbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .alexander-birthday-page .lux-topbar-left,
+    .alexander-birthday-page .lux-topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .alexander-birthday-page .lux-topbar a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .alexander-birthday-page .lux-pill-link,
+    .alexander-birthday-page .lux-pill-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border-radius: 999px;
+      padding: 0.55rem 0.95rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .alexander-birthday-page .lux-pill-link:hover,
+    .alexander-birthday-page .lux-pill-call:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    .alexander-birthday-page .lux-pill-link {
+      background: rgba(255, 255, 255, 0.22);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .alexander-birthday-page .lux-pill-call {
+      background: var(--white);
+      color: #7c5a07;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .alexander-birthday-page .lux-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(12, 12, 14, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .alexander-birthday-page .lux-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .alexander-birthday-page .lux-brand {
+      text-decoration: none;
+      color: inherit;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .alexander-birthday-page .lux-brand-mark {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+
+    .alexander-birthday-page .lux-brand-sub {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+    }
+
+    .alexander-birthday-page .lux-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .alexander-birthday-page .lux-nav a {
+      color: var(--slate-light);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .alexander-birthday-page .lux-nav a:hover {
+      color: var(--gold-bright);
+    }
+
+    .alexander-birthday-page .lux-nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--gold);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.65rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .alexander-birthday-page .lux-nav-cta:hover {
+      color: var(--ink);
+      opacity: 0.94;
+    }
+
+    .alexander-birthday-page .lux-footer {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(201, 162, 39, 0.15), transparent 35%),
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 25%),
+        #0f1014;
+      color: var(--white);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 4rem;
+    }
+
+    .alexander-birthday-page .lux-footer-main {
+      padding: 3rem 0 2rem;
+    }
+
+    .alexander-birthday-page .lux-footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .alexander-birthday-page .lux-footer-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .alexander-birthday-page .lux-footer-copy,
+    .alexander-birthday-page .lux-footer-links a,
+    .alexander-birthday-page .lux-footer-meta {
+      color: var(--slate-light);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      text-decoration: none;
+    }
+
+    .alexander-birthday-page .lux-footer-links {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .alexander-birthday-page .lux-footer-links a:hover {
+      color: var(--gold-bright);
+    }
+
+    .alexander-birthday-page .lux-footer-heading {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 0.8rem;
+    }
+
+    .alexander-birthday-page .lux-footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1rem 0 1.4rem;
+    }
+
+    .alexander-birthday-page .lux-footer-bottom .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .alexander-birthday-page .lux-footer-legal {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .alexander-birthday-page .lux-footer-legal a {
+      color: var(--slate-light);
+      text-decoration: none;
+      font-size: 0.84rem;
+    }
+
+    .alexander-birthday-page .lux-footer-legal a:hover {
+      color: var(--gold-bright);
+    }
+
+    @media (max-width: 767px) {
+      .alexander-birthday-page .container {
+        padding: 0 1rem;
+      }
+
+      .alexander-birthday-page .lux-topbar .container,
+      .alexander-birthday-page .lux-header .container,
+      .alexander-birthday-page .lux-footer .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .alexander-birthday-page .lux-topbar .container,
+      .alexander-birthday-page .lux-header .container,
+      .alexander-birthday-page .lux-footer-bottom .container {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .alexander-birthday-page .lux-nav {
+        justify-content: center;
+      }
+
+      .alexander-birthday-page .lux-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .alexander-birthday-page .hero {
+        padding: 2.25rem 0 3rem;
+      }
+
+      .alexander-birthday-page .status-badge,
+      .alexander-birthday-page .route-pill {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .alexander-birthday-page .hero-greeting {
+        font-size: 1rem;
+      }
+
+      .alexander-birthday-page .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .alexander-birthday-page .hero-meta span {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .alexander-birthday-page .approval-banner {
+        padding: 1rem;
+      }
+
+      .alexander-birthday-page .approval-banner-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .alexander-birthday-page .approval-banner-title,
+      .alexander-birthday-page .approval-banner-copy {
+        text-align: center;
+      }
+
+      .alexander-birthday-page .approval-banner-top {
+        justify-content: center;
+      }
+
+      .alexander-birthday-page .card-body,
+      .alexander-birthday-page .event-strip-body,
+      .alexander-birthday-page .option-header,
+      .alexander-birthday-page .line-item {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .alexander-birthday-page .option-header {
+        padding-top: 1.25rem;
+      }
+
+      .alexander-birthday-page .option-header h3 {
+        padding-right: 0;
+        margin-top: 0.75rem;
+      }
+
+      .alexander-birthday-page .recommended-badge {
+        position: static;
+        margin-bottom: 0.5rem;
+      }
+
+      .alexander-birthday-page .line-item {
+        grid-template-columns: auto 1fr;
+      }
+
+      .alexander-birthday-page .line-item .price {
+        grid-column: 2;
+        text-align: left;
+        padding-top: 0.15rem;
+      }
+
+      .alexander-birthday-page .comparison-wrap {
+        overflow: visible;
+      }
+
+      .alexander-birthday-page table.comparison,
+      .alexander-birthday-page table.comparison thead,
+      .alexander-birthday-page table.comparison tbody,
+      .alexander-birthday-page table.comparison tr,
+      .alexander-birthday-page table.comparison th,
+      .alexander-birthday-page table.comparison td {
+        display: block;
+        width: 100%;
+      }
+
+      .alexander-birthday-page table.comparison thead {
+        display: none;
+      }
+
+      .alexander-birthday-page table.comparison tbody tr {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .alexander-birthday-page table.comparison tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      .alexander-birthday-page table.comparison tbody td {
+        border-bottom: none;
+        padding: 0.3rem 0;
+        text-align: left;
+      }
+
+      .alexander-birthday-page table.comparison tbody td:not(:first-child) {
+        text-align: left;
+      }
+
+      .alexander-birthday-page table.comparison tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--slate);
+        margin-bottom: 0.15rem;
+      }
+
+      .alexander-birthday-page table.comparison tbody tr.total-row {
+        padding: 1rem;
+      }
+
+      .alexander-birthday-page footer {
+        padding: 1.5rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .alexander-birthday-page .hero h1 {
+        font-size: 2rem;
+      }
+
+      .alexander-birthday-page .hero-eyebrow,
+      .alexander-birthday-page footer .brand {
+        font-size: 0.95rem;
+      }
+
+      .alexander-birthday-page .framework-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .alexander-birthday-page .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="alexander-birthday-page">
+
+  <div class="lux-topbar">
+    <div class="container">
+      <div class="lux-topbar-left">
+        <a href="tel:+44-7351-271379"><i class="bi bi-telephone-fill" aria-hidden="true"></i> +44-7351-271379</a>
+        <span><i class="bi bi-stars" aria-hidden="true"></i> Celebrating Alexander J. Skarsgard - August 25</span>
+      </div>
+      <div class="lux-topbar-actions">
+        <a class="lux-pill-link" href="contact.html"><i class="bi bi-chat-dots-fill" aria-hidden="true"></i> Book Now</a>
+        <a class="lux-pill-call" href="tel:+44-7351-271379"><i class="bi bi-telephone-forward-fill" aria-hidden="true"></i> Call Direct</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="lux-header">
+    <div class="container">
+      <a class="lux-brand" href="/">
+        <span class="lux-brand-mark">Endorsco</span>
+        <span class="lux-brand-sub">Private Guest Approval</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Document bar -->
+  <div class="doc-bar">
+    <div class="container">
+      <span>Prepared exclusively for <strong>Eva Elvira Haro</strong></span>
+      <span>July 7, 2026 · Confidential</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-dot" aria-hidden="true"></span>
+            Whitelist Admission Confirmed
+          </div>
+
+          <p class="hero-eyebrow">Official Birthday Whitelist Approval</p>
+
+          <h1>Congratulations,<br /><em>Eva</em></h1>
+
+          <p class="hero-greeting">
+            You have officially <strong>joined the birthday whitelist</strong>. This private approval page confirms
+            your reserved place for Alexander J. Skarsgård's 50th birthday celebration in Stockholm and presents
+            three curated travel options for your journey from the <strong>USA</strong>.
+          </p>
+
+          <div class="route-pill">
+            <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+            USA
+            <span class="arrow" aria-hidden="true">→</span>
+            <i class="bi bi-airplane-fill" aria-hidden="true"></i>
+            Stockholm, Sweden
+          </div>
+
+          <div class="hero-meta">
+            <span><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Whitelist Joined</span>
+            <span><i class="bi bi-globe-americas" aria-hidden="true"></i> Origin: USA</span>
+            <span><i class="bi bi-calendar-event" aria-hidden="true"></i> Event: Aug 25, 2026</span>
+            <span><i class="bi bi-shield-check" aria-hidden="true"></i> Private Approval Page</span>
+          </div>
+
+          <div class="approval-banner">
+            <div class="approval-banner-top">
+              <span class="approval-banner-badge">
+                <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+                Admission Approved
+              </span>
+              <span class="approval-banner-code">Guest Record 112</span>
+            </div>
+            <div class="approval-banner-title">Your Place On The Whitelist Is Reserved</div>
+            <p class="approval-banner-copy">
+              Eva Elvira Haro, your approval has been privately recorded and your guest position is secured for
+              the Stockholm celebration. This page serves as your confirmation record and travel planning brief.
+            </p>
+            <div class="approval-banner-grid">
+              <div class="approval-banner-item">
+                <span class="approval-banner-item-label">Guest</span>
+                <span class="approval-banner-item-value">Eva Elvira Haro</span>
+              </div>
+              <div class="approval-banner-item">
+                <span class="approval-banner-item-label">Status</span>
+                <span class="approval-banner-item-value">Whitelist Joined</span>
+              </div>
+              <div class="approval-banner-item">
+                <span class="approval-banner-item-label">Approval Date</span>
+                <span class="approval-banner-item-value">July 7, 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-portrait-wrap">
+          <figure class="hero-portrait">
+            <img
+              src="eva.jpg"
+              alt="Eva Elvira Haro — approved whitelist client"
+            />
+            <div class="hero-portrait-overlay" aria-hidden="true"></div>
+            <figcaption class="hero-portrait-label">
+              <span class="whitelist-tag">
+                <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+                Whitelist Joined
+              </span>
+              <span class="portrait-name">Eva Elvira Haro</span>
+              <span class="portrait-location">
+                <i class="bi bi-geo-alt" aria-hidden="true"></i> USA
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+
+      <!-- Personal welcome -->
+      <section class="section">
+        <div class="card welcome-card">
+          <div class="card-body">
+            <p class="salutation">Dear Eva,</p>
+            <p>
+              Congratulations — your place on the birthday whitelist is officially confirmed. From our team to you
+              in the USA, we are delighted to welcome you into a limited guest circle for this milestone Stockholm
+              celebration.
+            </p>
+            <p>
+              This page serves as your personal approval record and travel overview. Each option below is designed
+              to make your arrival feel seamless, private, and celebratory from the moment you depart the USA.
+              Every line item remains locked to a fixed total with no hidden adjustments.
+            </p>
+            <p>
+              Review the options at your pace. When you are ready, your guest services team will finalize routing,
+              reservations, and itinerary details around the tier that best suits your preferred pace and level of
+              privacy.
+            </p>
+            <div class="signature">
+              Prepared with care for your journey
+              <strong>Endorsco · Birthday Experience Division</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Event context -->
+      <section class="section">
+        <div class="section-head" style="padding-top: 32px;">
+          <p class="section-label"><i class="bi bi-stars" aria-hidden="true"></i> Approval Notice</p>
+          <h2 class="section-title">You Are Officially On The Whitelist</h2>
+          <p class="section-sub">Stockholm, Sweden — August 25, 2026. Your approval unlocks priority guest handling, reserved celebration access, and curated arrival planning.</p>
+        </div>
+        <div class="card event-strip">
+          <div class="event-strip-image">
+            <img
+              src="https://www.endorscobookings.com/images/skarsgard-692e0021b8c6c.avif"
+              alt="Alexander J. Skarsgård"
+            />
+          </div>
+          <div class="event-strip-body">
+            <h3>A Confirmed Place In Stockholm</h3>
+            <p>
+              From Stockholm stages to Hollywood screens — celebrating the artistry and quiet intensity of
+              one of Sweden's most distinguished actors. As an approved guest, Eva, your place is secured within
+              an intimate international circle gathering for this milestone event.
+            </p>
+            <span class="event-date">
+              <i class="bi bi-cake2-fill" aria-hidden="true"></i>
+              August 25, 2026 · Turning 50
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Framework -->
+      <section class="section">
+        <div class="section-head">
+          <p class="section-label"><i class="bi bi-layers-fill" aria-hidden="true"></i> Approved Access</p>
+          <h2 class="section-title">What Your Approval Unlocks</h2>
+          <p class="section-sub">Your whitelist confirmation opens access to a premium travel framework built for comfort, privacy, and a polished Stockholm arrival.</p>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="framework-grid">
+              <div class="framework-item">
+                <span class="framework-icon"><i class="bi bi-ticket-perforated-fill" aria-hidden="true"></i></span>
+                <span>Exclusive Access</span>
+              </div>
+              <div class="framework-item">
+                <span class="framework-icon"><i class="bi bi-star-fill" aria-hidden="true"></i></span>
+                <span>VIP Seating</span>
+              </div>
+              <div class="framework-item">
+                <span class="framework-icon"><i class="bi bi-airplane-fill" aria-hidden="true"></i></span>
+                <span>Flights</span>
+              </div>
+              <div class="framework-item">
+                <span class="framework-icon"><i class="bi bi-building-fill" aria-hidden="true"></i></span>
+                <span>Luxury Accommodation</span>
+              </div>
+              <div class="framework-item">
+                <span class="framework-icon"><i class="bi bi-car-front-fill" aria-hidden="true"></i></span>
+                <span>Chauffeur Transport</span>
+              </div>
+              <div class="framework-item">
+                <span class="framework-icon"><i class="bi bi-headset" aria-hidden="true"></i></span>
+                <span>Guest Services</span>
+              </div>
+              <div class="framework-item">
+                <span class="framework-icon"><i class="bi bi-shield-lock-fill" aria-hidden="true"></i></span>
+                <span>Privacy / Security</span>
+              </div>
+              <div class="framework-item">
+                <span class="framework-icon"><i class="bi bi-cup-straw" aria-hidden="true"></i></span>
+                <span>Experiences</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Package options -->
+      <section class="section">
+        <div class="section-head" style="padding-top: 32px;">
+          <p class="section-label"><i class="bi bi-gem" aria-hidden="true"></i> Approved Options</p>
+          <h2 class="section-title">Your Curated Tiers</h2>
+          <p class="section-sub">Three approved travel options for your USA ↔ Stockholm journey. All figures are shown in USD.</p>
+        </div>
+
+        <div class="options-grid">
+
+          <!-- Option 1 -->
+          <article class="card option-card">
+            <header class="option-header tier-1">
+              <p class="option-tier-label">Option 1</p>
+              <h3>Signature VIP Production Package</h3>
+              <p class="option-target">Ideal for a polished Stockholm arrival with premium access and full guest support throughout.</p>
+              <div class="option-total">Total · <strong>USD 30,000</strong></div>
+            </header>
+            <ul class="line-items">
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-airplane" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Flights — Business Class USA ↔ Sweden</div>
+                  <div class="desc">Qatar / Emirates / Finnair long-haul business · Flexible fare + seat blocking from the USA</div>
+                </div>
+                <div class="price">$4,500</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-building" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Luxury Accommodation — 5 Nights Stockholm</div>
+                  <div class="desc">Grand Hôtel waterfront suite mix (4 nights) · At Six premium suite (1 night)</div>
+                </div>
+                <div class="price">$5,800</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-car-front" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Chauffeur &amp; Ground Transport</div>
+                  <div class="desc">Mercedes S-Class + airport VIP transfers · Moderate daily use (6–7 hrs/day)</div>
+                </div>
+                <div class="price">$2,700</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-ticket-perforated" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Exclusive Access Layer</div>
+                  <div class="desc">VIP gala entry + premium seating · Michelin-tier dining reservation priority</div>
+                </div>
+                <div class="price">$7,200</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-headset" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Guest Services &amp; Coordination</div>
+                  <div class="desc">Dedicated itinerary manager · 24/7 booking priority from USA time zones</div>
+                </div>
+                <div class="price">$3,200</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-shield-lock" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Privacy &amp; Soft Security</div>
+                  <div class="desc">Discreet arrivals · Venue coordination handling</div>
+                </div>
+                <div class="price">$1,600</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-water" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Experiences Package</div>
+                  <div class="desc">Private yacht (archipelago charter) · Frantzén-level Michelin dining · Spa + cultural tour</div>
+                </div>
+                <div class="price">$5,000</div>
+              </li>
+              
+            </ul>
+          </article>
+
+          <!-- Option 2 -->
+          <article class="card option-card">
+            <header class="option-header tier-2">
+              <span class="recommended-badge"><i class="bi bi-star-fill" aria-hidden="true"></i> Recommended</span>
+              <p class="option-tier-label">Option 2</p>
+              <h3>Ultra A-List Celebrity Execution</h3>
+              <p class="option-target">Maximum access, mobility, and guest services depth — the definitive A-list Stockholm experience.</p>
+              <div class="option-total">Total · <strong>USD 45,000</strong></div>
+            </header>
+            <ul class="line-items">
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-airplane-engines" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Flights — Premium Business → First Hybrid</div>
+                  <div class="desc">Priority Qsuite / Emirates First segments · Maximum flexibility from the USA</div>
+                </div>
+                <div class="price">$6,800</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-building-fill-check" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Ultra Suite Accommodation — 5 Nights</div>
+                  <div class="desc">Full Grand Hôtel waterfront suite block · Guaranteed premium floor allocation</div>
+                </div>
+                <div class="price">$8,200</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-car-front-fill" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Full Chauffeur Retainer</div>
+                  <div class="desc">10-hour daily standby · Night, event, and airport coverage throughout</div>
+                </div>
+                <div class="price">$5,500</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-ticket-detailed-fill" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">High-Level Exclusive Access</div>
+                  <div class="desc">Front-tier gala seating · Private dining room buyouts · Enhanced invitation positioning</div>
+                </div>
+                <div class="price">$10,500</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-people-fill" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Full Guest Services Team Coverage</div>
+                  <div class="desc">Lead guest specialist + backup support · Real-time itinerary control across time zones</div>
+                </div>
+                <div class="price">$5,800</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-shield-fill-check" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Enhanced Privacy &amp; Security</div>
+                  <div class="desc">Controlled entry handling · Low-profile arrival strategy</div>
+                </div>
+                <div class="price">$2,700</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-balloon-heart-fill" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Expanded Celebrity Experiences</div>
+                  <div class="desc">Full archipelago yacht · Michelin tasting + wine pairing · After-hours museum · Luxury spa suite</div>
+                </div>
+                <div class="price">$5,500</div>
+              </li>
+              
+            </ul>
+          </article>
+
+          <!-- Option 3 -->
+          <article class="card option-card">
+            <header class="option-header tier-3">
+              <p class="option-tier-label">Option 3</p>
+              <h3>Essential VIP Arrival Package</h3>
+              <p class="option-target">Designed for guests seeking a seamless Stockholm arrival with premium hospitality, enhanced privacy, and curated event access.</p>
+              <div class="option-total">Total · <strong>USD 9,600</strong></div>
+            </header>
+            <ul class="line-items">
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-building" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Luxury Accommodation — 2 Nights Stockholm</div>
+                  <div class="desc">Premium room at a five-star central Stockholm hotel with breakfast included.</div>
+                </div>
+                <div class="price">$2,500</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-car-front-fill" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Airport Chauffeur &amp; Executive Transfers</div>
+                  <div class="desc">Private luxury vehicle for airport arrival, departure, and event transportation.</div>
+                </div>
+                <div class="price">$1,000</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-ticket-perforated-fill" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">VIP Gala Access</div>
+                  <div class="desc">Standard VIP admission with reserved seating and guest reception access.</div>
+                </div>
+                <div class="price">$2,200</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-shield-lock-fill" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Privacy &amp; Executive Security</div>
+                  <div class="desc">Professional arrival coordination, discreet venue assistance, and executive security support during key movements.</div>
+                </div>
+                <div class="price">$2,000</div>
+              </li>
+              <li class="line-item">
+                <span class="line-icon"><i class="bi bi-headset" aria-hidden="true"></i></span>
+                <div>
+                  <div class="label">Arrival Coordination &amp; Guest Support</div>
+                  <div class="desc">Personalized itinerary planning, reservation assistance, and on-site guest coordination throughout the stay.</div>
+                </div>
+                <div class="price">$1,900</div>
+              </li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+
+      
+   
+
+      <!-- Next steps -->
+      <section class="section">
+        <div class="section-head" style="padding-top: 32px;">
+          <p class="section-label"><i class="bi bi-arrow-right-circle-fill" aria-hidden="true"></i> Confirmation</p>
+          <h2 class="section-title" style="color: var(--white);">How To Proceed</h2>
+        </div>
+        <div class="card next-steps">
+          <div class="card-body">
+            <div class="next-steps-grid">
+              <div class="step-item">
+                <span class="step-num">1</span>
+                <h4>Review Your Tiers</h4>
+                <p>Compare Option 1, Option 2, and Option 3 at your convenience. Each one reflects your approved guest status and fixed pricing.</p>
+              </div>
+              <div class="step-item">
+                <span class="step-num">2</span>
+                <h4>Share Your Preference</h4>
+                <p>Confirm Option 1, Option 2, or Option 3 with your guest specialist and we will align flights from your nearest USA gateway.</p>
+              </div>
+              <div class="step-item">
+                <span class="step-num">3</span>
+                <h4>Final Approval Handling</h4>
+                <p>Your team secures accommodations, transfers, event credentials, and arrival timing under your approved whitelist status.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="lux-footer">
+    <div class="lux-footer-main">
+      <div class="container">
+        <div class="lux-footer-grid">
+          <div>
+            <p class="lux-footer-title">Alexander J. Skarsgård Birthday Whitelist Approval</p>
+            <p class="lux-footer-copy">
+              Prepared privately for Eva Elvira Haro. This guest page confirms whitelist admission, approved access,
+              and curated travel planning for the Stockholm celebration on August 25, 2026.
+            </p>
+          </div>
+          <div>
+            <p class="lux-footer-heading">Guest Record</p>
+            <div class="lux-footer-meta">Prepared for Eva Elvira Haro</div>
+            <div class="lux-footer-meta">USA to Stockholm</div>
+            <div class="lux-footer-meta">Whitelist joined July 7, 2026</div>
+          </div>
+          <div>
+            <p class="lux-footer-heading">Quick Links</p>
+            <div class="lux-footer-links">
+              <a href="talents.html">Actors &amp; Talent</a>
+              <a href="recent-bookings.html">Recent Bookings</a>
+              <a href="about-us.html">About Us</a>
+              <a href="contact.html">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lux-footer-bottom">
+      <div class="container">
+        <div class="lux-footer-meta">© 2026 Endorsco. All rights reserved.</div>
+        <div class="lux-footer-legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
